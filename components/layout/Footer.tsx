@@ -12,6 +12,7 @@ const footerLinks = {
     { label: "Our Team", href: "/team" },
   ],
   getInvolved: [
+    { label: "Apply", href: "/apply" },
     { label: "Donate", href: "#contact" },
     { label: "Volunteer", href: "#contact" },
     { label: "Partner With Us", href: "#contact" },

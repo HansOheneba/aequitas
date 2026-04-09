@@ -66,6 +66,7 @@ const navItems: NavItem[] = [
   { label: "Our Programs", megaMenu: programsMenu },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/#contact" },
+  { label: "Donate", href: "/#contact" },
   { label: "2030 Goal", href: "/2030-goal" },
 ];
 
@@ -296,30 +297,23 @@ export default function Header() {
               })}
             </nav>
 
-            {/* Desktop CTA — sharp Donate button */}
+            {/* Desktop CTA — Apply button */}
             <div className="hidden md:flex items-center">
               <Link
-                href="/#contact"
+                href="/apply"
                 style={{
                   fontSize: 12,
                   fontWeight: 600,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   padding: "9px 22px",
-                  border: "1px solid rgba(55,197,243,0.4)",
-                  color: "#37c5f3",
+                  background: "#37c5f3",
+                  color: "#07090f",
+                  border: "1px solid #37c5f3",
                   transition:
                     "background 200ms ease, color 200ms ease, border-color 200ms ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background =
-                    "#37c5f3";
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "#07090f";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "#37c5f3";
-                }}
-                onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.background =
                     "transparent";
                   (e.currentTarget as HTMLAnchorElement).style.color =
@@ -327,8 +321,16 @@ export default function Header() {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor =
                     "rgba(55,197,243,0.4)";
                 }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background =
+                    "#37c5f3";
+                  (e.currentTarget as HTMLAnchorElement).style.color =
+                    "#07090f";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                    "#37c5f3";
+                }}
               >
-                Donate
+                Apply Now
               </Link>
             </div>
 
@@ -457,19 +459,20 @@ export default function Header() {
 
               <div className="pt-5 mt-2">
                 <Link
-                  href="/#contact"
+                  href="/apply"
                   className="flex items-center justify-center w-full py-3.5 transition-all"
                   style={{
                     fontSize: 12,
                     fontWeight: 600,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    border: "1px solid rgba(55,197,243,0.4)",
-                    color: "#37c5f3",
+                    background: "#37c5f3",
+                    color: "#07090f",
+                    border: "1px solid #37c5f3",
                   }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  Donate
+                  Apply Now
                 </Link>
               </div>
             </nav>
