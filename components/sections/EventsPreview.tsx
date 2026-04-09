@@ -70,11 +70,11 @@ export default function EventsPreview() {
           <Link
             key={i}
             href="/events"
-            className="group relative flex items-center gap-6 md:gap-10 px-8 md:px-16 lg:px-24 py-8 md:py-10 border-b border-white/6 overflow-hidden transition-all duration-500 hover:bg-white/3 cursor-pointer"
+            className="group relative flex items-center gap-6 md:gap-10 px-8 md:px-16 lg:px-24 py-8 md:py-10 border-b border-white/6 overflow-hidden transition-all duration-500 hover:bg-white/6 cursor-pointer"
           >
             {/* Hover image peek — right side */}
             <div
-              className="absolute right-0 top-0 bottom-0 w-60 lg:w-[320px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              className="absolute right-0 top-0 bottom-0 w-60 lg:w-80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               aria-hidden="true"
             >
               <div
@@ -110,14 +110,14 @@ export default function EventsPreview() {
               <p className="text-[10px] font-semibold tracking-[0.18em] uppercase text-[#00b4d8]/70 mb-1.5">
                 {ev.type}
               </p>
-              <h3 className="text-[clamp(1.1rem,2.5vw,1.75rem)] font-bold leading-snug tracking-tight group-hover:text-blue transition-colors duration-300 truncate">
+              <h3 className="text-[clamp(1.1rem,2.5vw,1.75rem)] font-bold leading-snug tracking-tight group-hover:text-[#37c5f3] transition-colors duration-300 truncate">
                 {ev.title}
               </h3>
               <p className="text-[13px] text-white/30 mt-1">{ev.location}</p>
             </div>
 
             {/* Arrow */}
-            <div className="shrink-0 relative z-10 w-10 h-10 rounded-full border border-white/10 group-hover:border-blue/40 flex items-center justify-center text-white/20 group-hover:text-blue transition-all duration-300">
+            <div className="shrink-0 relative z-10 w-10 h-10 rounded-full border border-white/10 group-hover:border-[#37c5f3]/40 flex items-center justify-center text-white/20 group-hover:text-[#37c5f3] transition-all duration-300">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
                   d="M2 7h10M7.5 3l4 4-4 4"
