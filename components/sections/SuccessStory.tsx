@@ -1,133 +1,247 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Container from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import AnimateOnScroll from "@/components/shared/AnimateOnScroll";
+
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.08 },
+    );
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  return { ref, visible };
+}
+
+const stats = [
+  { value: "45", label: "Jobs Created" },
+  { value: "3 yrs", label: "To Profitability" },
+  { value: "12", label: "Scholars Mentored" },
+];
 
 export default function SuccessStory() {
+  const left = useReveal();
+  const right = useReveal();
+
   return (
-    <section id="success" className="py-24 bg-cream">
-      <Container>
-        <AnimateOnScroll direction="up">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <p className="text-gold font-semibold text-sm uppercase tracking-widest mb-3">
+    <section id="success" style={{ background: "white" }}>
+      <div
+        style={{
+          display: "grid",
+          minHeight: "580px",
+        }}
+        className="block lg:grid lg:grid-cols-2"
+      >
+        {/* Left dark panel */}
+        <div
+          ref={left.ref}
+          style={{
+            background: "#07090f",
+            position: "relative",
+            overflow: "hidden",
+            padding: "clamp(48px, 7vw, 96px)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+          }}
+        >
+          {/* Ghost watermark */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              fontSize: "clamp(100px, 16vw, 200px)",
+              fontWeight: 900,
+              lineHeight: 0.85,
+              color: "rgba(55,197,243,0.04)",
+              letterSpacing: "-0.04em",
+              userSelect: "none",
+              fontFamily: "var(--font-montserrat)",
+              pointerEvents: "none",
+            }}
+          >
+            STORY
+          </div>
+
+          {/* Quote block */}
+          <div
+            style={{
+              opacity: left.visible ? 1 : 0,
+              transform: left.visible ? "none" : "translateY(32px)",
+              transition: "opacity 0.8s ease, transform 0.8s ease",
+            }}
+          >
+            <div
+              style={{
+                width: 56,
+                height: 56,
+                border: "2px solid #37c5f3",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "'Courier New', monospace",
+                fontSize: "15px",
+                fontWeight: 700,
+                color: "#37c5f3",
+                marginBottom: 28,
+              }}
+            >
+              KA
+            </div>
+
+            <p
+              style={{
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+                color: "#37c5f3",
+                marginBottom: 16,
+              }}
+            >
               Featured Story
             </p>
-            <h2 className="text-4xl lg:text-5xl font-bold font-heading text-navy leading-tight">
-              From Struggle to Impact
-            </h2>
+
+            <blockquote
+              style={{
+                fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)",
+                fontWeight: 700,
+                lineHeight: 1.5,
+                color: "white",
+                marginBottom: 32,
+                fontFamily: "var(--font-montserrat)",
+              }}
+            >
+              &ldquo;I came with a dream and a dollar. Aequitas gave me the
+              tools to build an empire.&rdquo;
+            </blockquote>
+
+            <p style={{ fontSize: "15px", fontWeight: 700, color: "white", marginBottom: 2, fontFamily: "var(--font-montserrat)" }}>
+              Kwame Asante
+            </p>
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em" }}>
+              Accra, Ghana &bull; Class of 2018
+            </p>
           </div>
-        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Image placeholder */}
-          <AnimateOnScroll direction="left">
-            <div className="relative">
-              <div className="aspect-4/3 rounded-3xl bg-navy overflow-hidden flex items-end">
-                {/* Decorative gradient placeholder */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #0a1a3a 0%, #112347 50%, #c4a747 100%)",
-                  }}
-                />
-                {/* Pattern overlay */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-                    backgroundSize: "20px 20px",
-                  }}
-                />
-                {/* Caption bar */}
-                <div className="relative z-10 w-full bg-navy/80 backdrop-blur-sm p-6">
-                  <p className="text-white font-heading font-bold text-lg">
-                    Kwame Asante
-                  </p>
-                  <p className="text-gold text-sm">
-                    Scholar → Entrepreneur → Community Leader
-                  </p>
-                </div>
+          {/* Stats strip */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 1,
+              background: "rgba(255,255,255,0.06)",
+              marginTop: 48,
+              opacity: left.visible ? 1 : 0,
+              transform: left.visible ? "none" : "translateY(20px)",
+              transition: "opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s",
+            }}
+          >
+            {stats.map((s) => (
+              <div key={s.label} style={{ background: "#07090f", padding: "20px 16px", textAlign: "center" }}>
+                <p style={{ fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)", fontWeight: 800, color: "#37c5f3", fontFamily: "var(--font-montserrat)", lineHeight: 1 }}>
+                  {s.value}
+                </p>
+                <p style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
+                  {s.label}
+                </p>
               </div>
-
-              {/* Floating badge */}
-              <div className="absolute -top-5 -right-5 w-28 h-28 rounded-2xl bg-gold text-navy flex flex-col items-center justify-center shadow-xl font-heading font-bold text-center p-2">
-                <span className="text-3xl font-black">12×</span>
-                <span className="text-xs leading-tight">Revenue Growth</span>
-              </div>
-            </div>
-          </AnimateOnScroll>
-
-          {/* Story content */}
-          <AnimateOnScroll direction="right" delay={100}>
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-navy text-gold font-bold font-heading flex items-center justify-center text-lg">
-                  KA
-                </div>
-                <div>
-                  <p className="font-bold text-navy font-heading text-lg">
-                    Kwame Asante
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    Accra, Ghana &bull; Class of 2018
-                  </p>
-                </div>
-              </div>
-
-              <blockquote className="text-2xl font-bold font-heading text-navy leading-tight mb-6">
-                &ldquo;I came with a dream and a dollar. Aequitas gave me the
-                tools to build an empire.&rdquo;
-              </blockquote>
-
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Kwame grew up in a single-parent household in Accra, selling
-                water sachets after school to help pay rent. When a community
-                pastor nominated him for the Aequitas Scholarship in 2016, his
-                life changed overnight.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                After graduating with a degree in engineering, he enrolled in
-                the Startup Incubator. With a $7,500 seed grant and months of
-                coaching, he launched a solar-powered cold storage startup
-                serving rural farmers. Within three years, it became a
-                multi-million cedi operation employing 45 people.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                Today, Kwame mentors 12 scholars in the same program that
-                transformed him — paying forward what he received and proving
-                that transformation compounds.
-              </p>
-
-              <div className="flex flex-wrap gap-4 mb-8">
-                {[
-                  { value: "45", label: "Jobs Created" },
-                  { value: "3yrs", label: "To Profitability" },
-                  { value: "12", label: "Scholars Mentored" },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="bg-white rounded-xl px-5 py-4 text-center shadow-sm border border-gray-100"
-                  >
-                    <div className="text-2xl font-black text-gold font-heading">
-                      {s.value}
-                    </div>
-                    <div className="text-xs text-gray-500 font-medium">
-                      {s.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Button asChild variant="default">
-                <Link href="#program">Read More Stories</Link>
-              </Button>
-            </div>
-          </AnimateOnScroll>
+            ))}
+          </div>
         </div>
-      </Container>
+
+        {/* Right white panel */}
+        <div
+          ref={right.ref}
+          style={{
+            padding: "clamp(48px, 7vw, 96px)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            background: "white",
+          }}
+        >
+          <div
+            style={{
+              opacity: right.visible ? 1 : 0,
+              transform: right.visible ? "none" : "translateY(28px)",
+              transition: "opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+                fontWeight: 800,
+                color: "#0a0e1a",
+                lineHeight: 1.1,
+                marginBottom: 28,
+                fontFamily: "var(--font-montserrat)",
+              }}
+            >
+              From Struggle<br />
+              to <span style={{ color: "#37c5f3" }}>Impact</span>
+            </h2>
+
+            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 16 }}>
+              Kwame grew up in a single-parent household in Accra, selling water
+              sachets after school to help pay rent. When a community pastor
+              nominated him for the Aequitas Scholarship in 2016, his life
+              changed overnight.
+            </p>
+            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 16 }}>
+              After graduating with a degree in engineering, he enrolled in the
+              Startup Incubator. With a seed grant and months of coaching, he
+              launched a solar-powered cold storage startup serving rural
+              farmers.
+            </p>
+            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 44 }}>
+              Today, Kwame mentors 12 scholars in the same program that
+              transformed him — proving that transformation compounds.
+            </p>
+
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <Link
+                href="/apply"
+                style={{
+                  padding: "13px 32px",
+                  background: "#37c5f3",
+                  color: "#07090f",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  display: "inline-block",
+                }}
+              >
+                Start Your Journey
+              </Link>
+              <Link
+                href="/who-we-are"
+                style={{
+                  padding: "13px 32px",
+                  border: "1.5px solid #0a0e1a",
+                  color: "#0a0e1a",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  display: "inline-block",
+                }}
+              >
+                More Stories
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

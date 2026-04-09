@@ -65,8 +65,8 @@ const navItems: NavItem[] = [
   { label: "About Us", megaMenu: aboutMenu },
   { label: "Our Programs", megaMenu: programsMenu },
   { label: "Events", href: "/events" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Donate", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
+  { label: "Donate", href: "/contact" },
   { label: "2030 Goal", href: "/2030-goal" },
 ];
 

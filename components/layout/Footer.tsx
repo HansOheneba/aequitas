@@ -13,15 +13,15 @@ const footerLinks = {
   ],
   getInvolved: [
     { label: "Apply", href: "/apply" },
-    { label: "Donate", href: "#contact" },
-    { label: "Volunteer", href: "#contact" },
-    { label: "Partner With Us", href: "#contact" },
-    { label: "Sponsor a Scholar", href: "#contact" },
+    { label: "Donate", href: "/contact" },
+    { label: "Volunteer", href: "/contact" },
+    { label: "Partner With Us", href: "/contact" },
+    { label: "Sponsor a Scholar", href: "/contact" },
   ],
   contact: [
-    { label: "hello@aequitas.org", href: "mailto:hello@aequitas.org" },
-    { label: "+1 (555) 000-1234", href: "tel:+15550001234" },
-    { label: "New York, NY, USA", href: "#contact" },
+    { label: "info@aequitasfoundation.org", href: "mailto:info@aequitasfoundation.org" },
+    { label: "+233 (0) 55 141 4140", href: "tel:+233551414140" },
+    { label: "East Airport, Accra — Ghana", href: "/contact" },
   ],
 };
 
