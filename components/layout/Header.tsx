@@ -288,7 +288,9 @@ export default function Header() {
                       fontSize: 13,
                       fontWeight: is2030 ? 600 : 500,
                       letterSpacing: "0.04em",
-                      color: is2030 ? "var(--color-blue)" : "rgba(255,255,255,0.6)",
+                      color: is2030
+                        ? "var(--color-blue)"
+                        : "rgba(255,255,255,0.6)",
                     }}
                   >
                     {item.label}
@@ -420,7 +422,9 @@ export default function Header() {
                       fontSize: 13,
                       fontWeight: is2030 ? 600 : 500,
                       letterSpacing: "0.05em",
-                      color: is2030 ? "var(--color-blue)" : "rgba(255,255,255,0.55)",
+                      color: is2030
+                        ? "var(--color-blue)"
+                        : "rgba(255,255,255,0.55)",
                       borderBottom: "1px solid rgba(255,255,255,0.06)",
                     }}
                     onClick={() => setMobileOpen(false)}
