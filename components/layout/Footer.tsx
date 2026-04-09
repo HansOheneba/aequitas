@@ -19,7 +19,10 @@ const footerLinks = {
     { label: "Sponsor a Scholar", href: "/contact" },
   ],
   contact: [
-    { label: "info@aequitasfoundation.org", href: "mailto:info@aequitasfoundation.org" },
+    {
+      label: "info@aequitasfoundation.org",
+      href: "mailto:info@aequitasfoundation.org",
+    },
     { label: "+233 (0) 55 141 4140", href: "tel:+233551414140" },
     { label: "East Airport, Accra — Ghana", href: "/contact" },
   ],

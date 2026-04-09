@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const elRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true); },
       { threshold: 0.08 },
     );
-    if (ref.current) io.observe(ref.current);
+    if (elRef.current) io.observe(elRef.current);
     return () => io.disconnect();
   }, []);
-  return { ref, visible };
+  return { elRef, visible };
 }
 
 const partners = [
@@ -36,49 +36,28 @@ export default function Partners() {
   return (
     <section id="partners">
       {/* Header + grid */}
-      <div style={{ background: "white", padding: "clamp(72px, 10vw, 120px) clamp(24px, 6vw, 96px)" }}>
+      <div
+        className="bg-white px-6 md:px-16 lg:px-24"
+        style={{ paddingTop: "clamp(72px, 10vw, 120px)", paddingBottom: "clamp(72px, 10vw, 120px)" }}
+      >
         {/* Header */}
         <div
-          ref={header.ref}
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            gap: 32,
-            marginBottom: 64,
-            flexWrap: "wrap",
-            opacity: header.visible ? 1 : 0,
-            transform: header.visible ? "none" : "translateY(20px)",
-            transition: "opacity 0.7s ease, transform 0.7s ease",
-          }}
+          ref={header.elRef}
+          className={`flex items-end justify-between gap-8 mb-16 flex-wrap transition-all duration-700 ${header.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <div>
-            <p
-              style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                letterSpacing: "0.25em",
-                textTransform: "uppercase",
-                color: "#37c5f3",
-                marginBottom: 12,
-              }}
-            >
+            <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-blue mb-3">
               Our Partners
             </p>
             <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                fontWeight: 800,
-                color: "#0a0e1a",
-                lineHeight: 1.05,
-                fontFamily: "var(--font-montserrat)",
-              }}
+              className="font-extrabold text-dark leading-[1.05]"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontFamily: "var(--font-montserrat)" }}
             >
               Built with the<br />
-              <span style={{ color: "#37c5f3" }}>Best in Africa</span>
+              <span className="text-blue">Best in Africa</span>
             </h2>
           </div>
-          <p style={{ fontSize: "15px", lineHeight: 1.8, color: "#6b7280", maxWidth: 400 }}>
+          <p className="text-[15px] leading-[1.8] text-gray-500 max-w-md">
             We collaborate with institutions that share our conviction: that
             talent is equally distributed, but opportunity is not.
           </p>
@@ -86,90 +65,54 @@ export default function Partners() {
 
         {/* Partner grid */}
         <div
-          ref={grid.ref}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-            gap: 1,
-            background: "#e5e7eb",
-            border: "1px solid #e5e7eb",
-            opacity: grid.visible ? 1 : 0,
-            transform: grid.visible ? "none" : "translateY(24px)",
-            transition: "opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s",
-          }}
+          ref={grid.elRef}
+          className={`grid gap-px bg-gray-200 border border-gray-200 transition-all duration-700 delay-100 ${grid.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
         >
-          {partners.map((p, i) => (
-            <PartnerCard key={p.name} partner={p} delay={i * 50} />
+          {partners.map((p) => (
+            <PartnerCard key={p.name} partner={p} />
           ))}
         </div>
       </div>
 
       {/* CTA strip */}
       <div
-        ref={cta.ref}
-        style={{
-          background: "#07090f",
-          padding: "clamp(48px, 7vw, 80px) clamp(24px, 6vw, 96px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 32,
-          flexWrap: "wrap",
-          position: "relative",
-          overflow: "hidden",
-          opacity: cta.visible ? 1 : 0,
-          transform: cta.visible ? "none" : "translateY(20px)",
-          transition: "opacity 0.7s ease, transform 0.7s ease",
-        }}
+        ref={cta.elRef}
+        className={`bg-ink relative overflow-hidden flex items-center justify-between gap-8 flex-wrap px-6 md:px-16 lg:px-24 transition-all duration-700 ${cta.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+        style={{ paddingTop: "clamp(48px, 7vw, 80px)", paddingBottom: "clamp(48px, 7vw, 80px)" }}
       >
         {/* Ghost watermark */}
         <div
           aria-hidden
+          className="absolute right-0 top-0 font-black leading-[0.8] select-none pointer-events-none tracking-[-0.03em]"
           style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
             fontSize: "clamp(80px, 14vw, 160px)",
-            fontWeight: 900,
-            lineHeight: 0.8,
             color: "rgba(55,197,243,0.03)",
-            userSelect: "none",
             fontFamily: "var(--font-montserrat)",
-            pointerEvents: "none",
-            letterSpacing: "-0.03em",
           }}
         >
           PARTNER
         </div>
 
-        <div style={{ position: "relative" }}>
-          <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", color: "#37c5f3", marginBottom: 10 }}>
+        <div className="relative">
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-blue mb-2.5">
             Get Involved
           </p>
-          <h3 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontWeight: 800, color: "white", lineHeight: 1.15, fontFamily: "var(--font-montserrat)" }}>
+          <h3
+            className="font-extrabold text-white leading-[1.15]"
+            style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontFamily: "var(--font-montserrat)" }}
+          >
             Become a Partner
           </h3>
-          <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", marginTop: 8, maxWidth: 480 }}>
+          <p className="text-sm text-white/45 mt-2 max-w-xl">
             Join a growing coalition of organisations investing in the next
             generation of African leaders.
           </p>
         </div>
 
         <Link
-          href="/#contact"
-          style={{
-            padding: "14px 36px",
-            background: "#37c5f3",
-            color: "#07090f",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            display: "inline-block",
-            flexShrink: 0,
-            position: "relative",
-          }}
+          href="/contact"
+          className="relative inline-block shrink-0 px-9 py-3.5 bg-blue text-ink text-[12px] font-bold tracking-[0.15em] uppercase no-underline"
         >
           Partner With Us
         </Link>
@@ -178,45 +121,18 @@ export default function Partners() {
   );
 }
 
-function PartnerCard({ partner, delay }: { partner: typeof partners[0]; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-
+function PartnerCard({ partner }: { partner: typeof partners[0] }) {
   return (
-    <div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: "white",
-        padding: "28px 24px",
-        borderLeft: hovered ? "3px solid #37c5f3" : "3px solid transparent",
-        transition: "border-color 0.2s ease, background 0.2s ease",
-        cursor: "default",
-      }}
-    >
+    <div className="group bg-white px-6 py-7 border-l-[3px] border-l-transparent hover:border-l-blue transition-[border-color] duration-200 cursor-default">
       <p
-        style={{
-          fontSize: "10px",
-          fontWeight: 600,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          color: hovered ? "#37c5f3" : "#9ca3af",
-          marginBottom: 8,
-          transition: "color 0.2s",
-          fontFamily: "'Courier New', monospace",
-        }}
+        className="text-[10px] font-semibold tracking-[0.2em] uppercase text-gray-400 group-hover:text-blue transition-colors duration-200 mb-2"
+        style={{ fontFamily: "'Courier New', monospace" }}
       >
         {partner.category} &bull; {partner.since}
       </p>
       <p
-        style={{
-          fontSize: "15px",
-          fontWeight: 700,
-          color: "#0a0e1a",
-          lineHeight: 1.3,
-          fontFamily: "var(--font-montserrat)",
-        }}
+        className="text-[15px] font-bold text-dark leading-[1.3]"
+        style={{ fontFamily: "var(--font-montserrat)" }}
       >
         {partner.name}
       </p>

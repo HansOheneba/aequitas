@@ -6,15 +6,24 @@ const SHEET_ID = "1oNcstUQjR7AtT3tgc4W4nVOkNcdmPkAhRq1j3ypY1Lk";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, interest, message } = body as Record<string, string>;
+    const { name, email, phone, interest, message } = body as Record<
+      string,
+      string
+    >;
 
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
-      return NextResponse.json({ error: "Name, email, and message are required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Name, email, and message are required." },
+        { status: 400 },
+      );
     }
 
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(email)) {
-      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please enter a valid email address." },
+        { status: 400 },
+      );
     }
 
     const rawKey = process.env.GOOGLE_PRIVATE_KEY ?? "";
@@ -29,7 +38,14 @@ export async function POST(request: Request) {
     const sheets = google.sheets({ version: "v4", auth });
 
     const timestamp = new Date().toISOString();
-    const row = [timestamp, name.trim(), email.trim(), phone?.trim() ?? "", interest?.trim() ?? "", message.trim()];
+    const row = [
+      timestamp,
+      name.trim(),
+      email.trim(),
+      phone?.trim() ?? "",
+      interest?.trim() ?? "",
+      message.trim(),
+    ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
@@ -41,6 +57,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact API error:", err);
-    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again." },
+      { status: 500 },
+    );
   }
 }

@@ -122,16 +122,16 @@ export default function WhoWeArePage() {
           <h1 className="text-[clamp(3.5rem,8vw,8rem)] font-black text-white leading-[0.9] tracking-tight mb-8">
             Who
             <br />
-            We <span className="text-[#37c5f3]">Are</span>
+            We <span className="text-blue">Are</span>
           </h1>
-          <p className="text-white/55 text-[clamp(1rem,1.6vw,1.2rem)] leading-relaxed max-w-[480px]">
+          <p className="text-white/55 text-[clamp(1rem,1.6vw,1.2rem)] leading-relaxed max-w-120">
             A faith-based non-profit founded in 2018, committed to helping
             Africa&apos;s youth find, pursue, and live their passion.
           </p>
         </div>
 
         <span
-          className="absolute bottom-16 right-8 md:right-20 text-[clamp(6rem,14vw,12rem)] font-black leading-none select-none text-white/[0.03] tabular-nums"
+          className="absolute bottom-16 right-8 md:right-20 text-[clamp(6rem,14vw,12rem)] font-black leading-none select-none text-white/3 tabular-nums"
           aria-hidden="true"
         >
           2018
@@ -154,7 +154,7 @@ export default function WhoWeArePage() {
               environment gives every young person an equal opportunity to be
               instrumental in Africa&apos;s economic transformation.
             </p>
-            <div className="w-8 h-px bg-[#37c5f3]" />
+            <div className="w-8 h-px bg-blue" />
           </FadeIn>
         </div>
 
@@ -207,9 +207,9 @@ export default function WhoWeArePage() {
 
         {/* Vision */}
         <div className="group relative px-8 md:px-16 py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-[#37c5f3]/[0.025] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-blue/[0.025] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <FadeIn delay={120} className="relative z-10">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#37c5f3] mb-5">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-blue mb-5">
               Our Vision
             </p>
             <h2 className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold text-[#0a1a3a] leading-[1.15] tracking-tight mb-5">
@@ -219,7 +219,7 @@ export default function WhoWeArePage() {
               <br />
               to live their passion
             </h2>
-            <div className="w-6 h-px bg-[#37c5f3] mt-2" />
+            <div className="w-6 h-px bg-blue mt-2" />
           </FadeIn>
           <span
             className="absolute bottom-6 right-8 text-[90px] font-black leading-none select-none text-gray-950/[0.03]"
@@ -232,17 +232,17 @@ export default function WhoWeArePage() {
 
       {/* ── CORE VALUES — dark ────────────────────────────────────────── */}
       <section className="bg-[#0a0e1a] text-white">
-        <div className="flex items-end justify-between px-8 md:px-16 lg:px-24 pt-20 pb-12 border-b border-white/[0.06]">
+        <div className="flex items-end justify-between px-8 md:px-16 lg:px-24 pt-20 pb-12 border-b border-white/6">
           <div>
             <p className="text-[10px] tracking-[0.3em] uppercase text-[#00b4d8] mb-3">
               What We Stand For
             </p>
             <h2 className="text-[clamp(2.2rem,4vw,4rem)] font-bold leading-none tracking-tight">
-              Core <span className="text-[#37c5f3]">Values</span>
+              Core <span className="text-blue">Values</span>
             </h2>
           </div>
           <span
-            className="text-[clamp(4rem,8vw,8rem)] font-black leading-none select-none text-white/[0.03] pb-1"
+            className="text-[clamp(4rem,8vw,8rem)] font-black leading-none select-none text-white/3 pb-1"
             aria-hidden="true"
           >
             6
@@ -254,11 +254,11 @@ export default function WhoWeArePage() {
             <FadeIn
               key={v.word}
               delay={i * 70}
-              className="group relative border-b border-r border-white/[0.06] px-8 py-10 overflow-hidden [&:nth-child(2n)]:md:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0"
+              className="group relative border-b border-r border-white/6 px-8 py-10 overflow-hidden [&:nth-child(2n)]:md:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0"
             >
-              <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-white/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative z-10">
-                <span className="block text-[3.5rem] font-black leading-none text-white/[0.06] group-hover:text-[#00b4d8]/20 transition-colors duration-300 mb-2">
+                <span className="block text-[3.5rem] font-black leading-none text-white/6 group-hover:text-[#00b4d8]/20 transition-colors duration-300 mb-2">
                   {v.letter}
                 </span>
                 <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#00b4d8] mb-2">
@@ -288,17 +288,17 @@ export default function WhoWeArePage() {
             </h2>
           </FadeIn>
           <FadeIn delay={100}>
-            <p className="text-[15px] leading-[1.9] text-gray-600 mb-5 max-w-[480px]">
+            <p className="text-[15px] leading-[1.9] text-gray-600 mb-5 max-w-120">
               The foundation is governed by a 4-member board, chaired by
               Professor Alexander Dodoo and supported by dedicated leaders who
               bring strategic, financial, and pastoral oversight.
             </p>
-            <p className="text-[15px] leading-[1.9] text-gray-600 mb-5 max-w-[480px]">
+            <p className="text-[15px] leading-[1.9] text-gray-600 mb-5 max-w-120">
               The board works with the management team to set strategic
               priorities in line with our vision and mission, ensuring financial
               integrity and organisational accountability.
             </p>
-            <p className="text-[15px] leading-[1.9] text-gray-600 max-w-[480px]">
+            <p className="text-[15px] leading-[1.9] text-gray-600 max-w-120">
               Our flagship initiative — the Aequitas Experience — is a 12-week
               internship and training programme that helps youth discover their
               strengths, explore the world of work, and develop entrepreneurial
@@ -342,7 +342,7 @@ export default function WhoWeArePage() {
             <br />
             in building Africa&apos;s
             <br />
-            <span className="text-[#37c5f3]">next generation?</span>
+            <span className="text-blue">next generation?</span>
           </h2>
         </FadeIn>
         <FadeIn

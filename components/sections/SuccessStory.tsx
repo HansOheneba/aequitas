@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const elRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true); },
       { threshold: 0.08 },
     );
-    if (ref.current) io.observe(ref.current);
+    if (elRef.current) io.observe(elRef.current);
     return () => io.disconnect();
   }, []);
-  return { ref, visible };
+  return { elRef, visible };
 }
 
 const stats = [
@@ -28,127 +28,73 @@ export default function SuccessStory() {
   const right = useReveal();
 
   return (
-    <section id="success" style={{ background: "white" }}>
-      <div
-        style={{
-          display: "grid",
-          minHeight: "580px",
-        }}
-        className="block lg:grid lg:grid-cols-2"
-      >
+    <section id="success" className="bg-white">
+      <div className="grid lg:grid-cols-2 min-h-[580px]">
+
         {/* Left dark panel */}
         <div
-          ref={left.ref}
-          style={{
-            background: "#07090f",
-            position: "relative",
-            overflow: "hidden",
-            padding: "clamp(48px, 7vw, 96px)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-          }}
+          ref={left.elRef}
+          className="bg-ink relative overflow-hidden flex flex-col justify-end"
+          style={{ padding: "clamp(48px, 7vw, 96px)" }}
         >
           {/* Ghost watermark */}
           <div
             aria-hidden
+            className="absolute top-0 right-0 font-black leading-[0.85] select-none pointer-events-none tracking-[-0.04em]"
             style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
               fontSize: "clamp(100px, 16vw, 200px)",
-              fontWeight: 900,
-              lineHeight: 0.85,
               color: "rgba(55,197,243,0.04)",
-              letterSpacing: "-0.04em",
-              userSelect: "none",
               fontFamily: "var(--font-montserrat)",
-              pointerEvents: "none",
             }}
           >
             STORY
           </div>
 
           {/* Quote block */}
-          <div
-            style={{
-              opacity: left.visible ? 1 : 0,
-              transform: left.visible ? "none" : "translateY(32px)",
-              transition: "opacity 0.8s ease, transform 0.8s ease",
-            }}
-          >
+          <div className={`transition-all duration-700 ${left.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div
-              style={{
-                width: 56,
-                height: 56,
-                border: "2px solid #37c5f3",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "'Courier New', monospace",
-                fontSize: "15px",
-                fontWeight: 700,
-                color: "#37c5f3",
-                marginBottom: 28,
-              }}
+              className="w-14 h-14 border-2 border-blue flex items-center justify-center text-blue font-bold text-[15px] mb-7"
+              style={{ fontFamily: "'Courier New', monospace" }}
             >
               KA
             </div>
 
-            <p
-              style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                letterSpacing: "0.25em",
-                textTransform: "uppercase",
-                color: "#37c5f3",
-                marginBottom: 16,
-              }}
-            >
+            <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-blue mb-4">
               Featured Story
             </p>
 
             <blockquote
-              style={{
-                fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)",
-                fontWeight: 700,
-                lineHeight: 1.5,
-                color: "white",
-                marginBottom: 32,
-                fontFamily: "var(--font-montserrat)",
-              }}
+              className="font-bold text-white mb-8"
+              style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)", lineHeight: 1.5, fontFamily: "var(--font-montserrat)" }}
             >
               &ldquo;I came with a dream and a dollar. Aequitas gave me the
               tools to build an empire.&rdquo;
             </blockquote>
 
-            <p style={{ fontSize: "15px", fontWeight: 700, color: "white", marginBottom: 2, fontFamily: "var(--font-montserrat)" }}>
+            <p
+              className="text-[15px] font-bold text-white mb-0.5"
+              style={{ fontFamily: "var(--font-montserrat)" }}
+            >
               Kwame Asante
             </p>
-            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em" }}>
+            <p className="text-xs text-white/40 tracking-[0.05em]">
               Accra, Ghana &bull; Class of 2018
             </p>
           </div>
 
           {/* Stats strip */}
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 1,
-              background: "rgba(255,255,255,0.06)",
-              marginTop: 48,
-              opacity: left.visible ? 1 : 0,
-              transform: left.visible ? "none" : "translateY(20px)",
-              transition: "opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s",
-            }}
+            className={`grid grid-cols-3 gap-px bg-white/5 mt-12 transition-all duration-700 delay-200 ${left.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
           >
             {stats.map((s) => (
-              <div key={s.label} style={{ background: "#07090f", padding: "20px 16px", textAlign: "center" }}>
-                <p style={{ fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)", fontWeight: 800, color: "#37c5f3", fontFamily: "var(--font-montserrat)", lineHeight: 1 }}>
+              <div key={s.label} className="bg-ink px-4 py-5 text-center">
+                <p
+                  className="font-extrabold text-blue leading-none"
+                  style={{ fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)", fontFamily: "var(--font-montserrat)" }}
+                >
                   {s.value}
                 </p>
-                <p style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
+                <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-white/35 mt-1.5">
                   {s.label}
                 </p>
               </div>
@@ -158,89 +104,53 @@ export default function SuccessStory() {
 
         {/* Right white panel */}
         <div
-          ref={right.ref}
-          style={{
-            padding: "clamp(48px, 7vw, 96px)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            background: "white",
-          }}
+          ref={right.elRef}
+          className="bg-white flex flex-col justify-center"
+          style={{ padding: "clamp(48px, 7vw, 96px)" }}
         >
-          <div
-            style={{
-              opacity: right.visible ? 1 : 0,
-              transform: right.visible ? "none" : "translateY(28px)",
-              transition: "opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s",
-            }}
-          >
+          <div className={`transition-all duration-700 delay-100 ${right.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7"}`}>
             <h2
-              style={{
-                fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
-                fontWeight: 800,
-                color: "#0a0e1a",
-                lineHeight: 1.1,
-                marginBottom: 28,
-                fontFamily: "var(--font-montserrat)",
-              }}
+              className="font-extrabold text-dark leading-[1.1] mb-7"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontFamily: "var(--font-montserrat)" }}
             >
               From Struggle<br />
-              to <span style={{ color: "#37c5f3" }}>Impact</span>
+              to <span className="text-blue">Impact</span>
             </h2>
 
-            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 16 }}>
+            <p className="text-[15px] leading-[1.85] text-gray-500 mb-4">
               Kwame grew up in a single-parent household in Accra, selling water
               sachets after school to help pay rent. When a community pastor
               nominated him for the Aequitas Scholarship in 2016, his life
               changed overnight.
             </p>
-            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 16 }}>
+            <p className="text-[15px] leading-[1.85] text-gray-500 mb-4">
               After graduating with a degree in engineering, he enrolled in the
               Startup Incubator. With a seed grant and months of coaching, he
               launched a solar-powered cold storage startup serving rural
               farmers.
             </p>
-            <p style={{ fontSize: "15px", lineHeight: 1.85, color: "#4b5563", marginBottom: 44 }}>
+            <p className="text-[15px] leading-[1.85] text-gray-500 mb-11">
               Today, Kwame mentors 12 scholars in the same program that
               transformed him — proving that transformation compounds.
             </p>
 
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div className="flex gap-4 flex-wrap">
               <Link
                 href="/apply"
-                style={{
-                  padding: "13px 32px",
-                  background: "#37c5f3",
-                  color: "#07090f",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  display: "inline-block",
-                }}
+                className="inline-block px-8 py-3.5 bg-blue text-ink text-[12px] font-bold tracking-[0.15em] uppercase no-underline"
               >
                 Start Your Journey
               </Link>
               <Link
                 href="/who-we-are"
-                style={{
-                  padding: "13px 32px",
-                  border: "1.5px solid #0a0e1a",
-                  color: "#0a0e1a",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  display: "inline-block",
-                }}
+                className="inline-block px-8 py-3.5 border border-dark text-dark text-[12px] font-bold tracking-[0.15em] uppercase no-underline"
               >
                 More Stories
               </Link>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

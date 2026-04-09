@@ -122,7 +122,7 @@ function MegaDropdown({
       <div
         className="border border-white/10 overflow-hidden"
         style={{
-          background: "#07090f",
+          background: "var(--color-ink)",
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(-6px)",
           transition: "opacity 180ms ease, transform 180ms ease",
@@ -288,7 +288,7 @@ export default function Header() {
                       fontSize: 13,
                       fontWeight: is2030 ? 600 : 500,
                       letterSpacing: "0.04em",
-                      color: is2030 ? "#37c5f3" : "rgba(255,255,255,0.6)",
+                      color: is2030 ? "var(--color-blue)" : "rgba(255,255,255,0.6)",
                     }}
                   >
                     {item.label}
@@ -301,34 +301,7 @@ export default function Header() {
             <div className="hidden md:flex items-center">
               <Link
                 href="/apply"
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  padding: "9px 22px",
-                  background: "#37c5f3",
-                  color: "#07090f",
-                  border: "1px solid #37c5f3",
-                  transition:
-                    "background 200ms ease, color 200ms ease, border-color 200ms ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background =
-                    "transparent";
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "#37c5f3";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "rgba(55,197,243,0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background =
-                    "#37c5f3";
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "#07090f";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor =
-                    "#37c5f3";
-                }}
+                className="text-[12px] font-semibold tracking-[0.12em] uppercase px-5.5 py-2.25 bg-blue text-ink border border-blue hover:bg-transparent hover:text-blue hover:border-blue/40 transition-all duration-200"
               >
                 Apply Now
               </Link>
@@ -355,7 +328,7 @@ export default function Header() {
             className="md:hidden max-h-[80vh] overflow-y-auto"
             style={{
               borderTop: "1px solid rgba(255,255,255,0.07)",
-              background: "#07090f",
+              background: "var(--color-ink)",
             }}
           >
             <nav className="px-5 py-5 flex flex-col">
@@ -447,7 +420,7 @@ export default function Header() {
                       fontSize: 13,
                       fontWeight: is2030 ? 600 : 500,
                       letterSpacing: "0.05em",
-                      color: is2030 ? "#37c5f3" : "rgba(255,255,255,0.55)",
+                      color: is2030 ? "var(--color-blue)" : "rgba(255,255,255,0.55)",
                       borderBottom: "1px solid rgba(255,255,255,0.06)",
                     }}
                     onClick={() => setMobileOpen(false)}
@@ -460,16 +433,7 @@ export default function Header() {
               <div className="pt-5 mt-2">
                 <Link
                   href="/apply"
-                  className="flex items-center justify-center w-full py-3.5 transition-all"
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    background: "#37c5f3",
-                    color: "#07090f",
-                    border: "1px solid #37c5f3",
-                  }}
+                  className="flex items-center justify-center w-full py-3.5 text-[12px] font-semibold tracking-[0.12em] uppercase bg-blue text-ink border border-blue transition-all"
                   onClick={() => setMobileOpen(false)}
                 >
                   Apply Now

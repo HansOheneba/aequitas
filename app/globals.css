@@ -57,9 +57,11 @@
   --color-blue: #37c5f3;
   --color-blue-light: #7dd9f7;
   --color-blue-dark: #1aadd4;
-  --color-cream: #f9f5eb;
+  --color-cream: #f9f6f1;
   --color-cream-dark: #ede9db;
   --color-charcoal: #1f2937;
+  --color-ink: #07090f;
+  --color-dark: #0a0e1a;
 }
 
 html {

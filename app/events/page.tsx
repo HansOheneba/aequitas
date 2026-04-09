@@ -101,7 +101,7 @@ export default function EventsPage() {
   return (
     <main className="bg-[#08090f] text-white min-h-screen">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-end">
+      <section className="relative h-[85vh] min-h-150 flex items-end">
         {/* BG image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -137,7 +137,7 @@ export default function EventsPage() {
             <h1 className="text-[clamp(2.8rem,7vw,6rem)] font-bold leading-[0.92] tracking-tight mb-6">
               {FEATURED.title}
             </h1>
-            <p className="text-white/55 text-[clamp(0.95rem,1.5vw,1.15rem)] leading-relaxed max-w-[480px] mb-10">
+            <p className="text-white/55 text-[clamp(0.95rem,1.5vw,1.15rem)] leading-relaxed max-w-120 mb-10">
               {FEATURED.description}
             </p>
 
@@ -163,7 +163,7 @@ export default function EventsPage() {
 
         {/* Decorative date badge */}
         <div className="absolute right-8 md:right-16 lg:right-24 bottom-16 md:bottom-24 text-right hidden md:block">
-          <div className="text-[clamp(4rem,8vw,7rem)] font-black leading-none tabular-nums text-white/[0.06]">
+          <div className="text-[clamp(4rem,8vw,7rem)] font-black leading-none tabular-nums text-white/6">
             {FEATURED.day}
           </div>
           <div className="text-[11px] font-bold tracking-[0.3em] uppercase text-white/20">
@@ -174,7 +174,7 @@ export default function EventsPage() {
 
       {/* ── Upcoming events grid ──────────────────────────────────────────── */}
       <section id="upcoming" className="px-8 md:px-16 lg:px-24 pt-20 pb-10">
-        <div className="flex items-end justify-between mb-12 pb-6 border-b border-white/[0.06]">
+        <div className="flex items-end justify-between mb-12 pb-6 border-b border-white/6">
           <div>
             <p className="text-[10px] tracking-[0.3em] uppercase text-[#00b4d8] mb-3">
               Coming Up
@@ -185,16 +185,16 @@ export default function EventsPage() {
               <span className="text-white/20">Events</span>
             </h2>
           </div>
-          <span className="text-[clamp(4rem,8vw,7rem)] font-black leading-none text-white/[0.04] tabular-nums select-none">
+          <span className="text-[clamp(4rem,8vw,7rem)] font-black leading-none text-white/4 tabular-nums select-none">
             0{UPCOMING.length + 1}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
           {UPCOMING.map((ev, i) => (
             <div
               key={i}
-              className="group relative bg-[#08090f] overflow-hidden flex flex-col min-h-[420px]"
+              className="group relative bg-[#08090f] overflow-hidden flex flex-col min-h-105"
             >
               {/* Image */}
               <div className="relative h-52 overflow-hidden shrink-0">
@@ -225,7 +225,7 @@ export default function EventsPage() {
                     </div>
                   </div>
                 </div>
-                <h3 className="text-[1.05rem] font-bold leading-snug mb-2 group-hover:text-[#37c5f3] transition-colors duration-300">
+                <h3 className="text-[1.05rem] font-bold leading-snug mb-2 group-hover:text-blue transition-colors duration-300">
                   {ev.title}
                 </h3>
                 <p className="text-[13px] text-white/35 mb-1 tracking-wide">
@@ -251,11 +251,11 @@ export default function EventsPage() {
 
       {/* ── Past events archive ───────────────────────────────────────────── */}
       <section className="px-8 md:px-16 lg:px-24 pt-16 pb-24">
-        <div className="flex items-center gap-6 mb-10 pb-6 border-b border-white/[0.06]">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-[#37c5f3]">
+        <div className="flex items-center gap-6 mb-10 pb-6 border-b border-white/6">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-blue">
             Archive
           </p>
-          <div className="h-px flex-1 bg-white/[0.06]" />
+          <div className="h-px flex-1 bg-white/6" />
           <span className="text-[10px] text-white/20 tracking-wide">
             {PAST.length} Events
           </span>
@@ -265,7 +265,7 @@ export default function EventsPage() {
           {PAST.map((ev, i) => (
             <div
               key={i}
-              className="group flex items-center gap-6 py-5 border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors duration-200 px-2 -mx-2 rounded"
+              className="group flex items-center gap-6 py-5 border-b border-white/4 hover:bg-white/2 transition-colors duration-200 px-2 -mx-2 rounded"
             >
               <span className="shrink-0 text-[9px] font-bold tracking-widest text-white/15 w-5 tabular-nums">
                 {String(i + 1).padStart(2, "0")}
@@ -279,7 +279,7 @@ export default function EventsPage() {
                 </p>
               </div>
               <div className="shrink-0 flex items-center gap-5">
-                <span className="text-[10px] tracking-[0.15em] uppercase text-[#37c5f3]/50 hidden sm:block">
+                <span className="text-[10px] tracking-[0.15em] uppercase text-blue/50 hidden sm:block">
                   {ev.type}
                 </span>
                 <span className="text-[12px] text-white/25 font-medium tabular-nums">

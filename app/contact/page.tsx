@@ -8,7 +8,9 @@ function useReveal() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      ([e]) => {
+        if (e.isIntersecting) setVisible(true);
+      },
       { threshold: 0.06 },
     );
     if (elRef.current) io.observe(elRef.current);
@@ -58,10 +60,16 @@ export default function ContactPage() {
     interest: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  function handleChange(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
@@ -92,8 +100,11 @@ export default function ContactPage() {
     <main>
       {/* ── Dark hero ──────────────────────────────────────────── */}
       <section
-        className="bg-[#07090f] relative overflow-hidden px-6 md:px-16 lg:px-24"
-        style={{ paddingTop: "clamp(80px, 12vw, 140px)", paddingBottom: "clamp(56px, 8vw, 96px)" }}
+        className="bg-ink relative overflow-hidden px-6 md:px-16 lg:px-24"
+        style={{
+          paddingTop: "clamp(80px, 12vw, 140px)",
+          paddingBottom: "clamp(56px, 8vw, 96px)",
+        }}
       >
         {/* Ghost watermark */}
         <div
@@ -113,10 +124,16 @@ export default function ContactPage() {
         </p>
         <h1
           className="relative font-extrabold text-white max-w-2xl"
-          style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)", lineHeight: 1, fontFamily: "var(--font-montserrat)" }}
+          style={{
+            fontSize: "clamp(2.4rem, 6vw, 5rem)",
+            lineHeight: 1,
+            fontFamily: "var(--font-montserrat)",
+          }}
         >
-          Let&rsquo;s Build<br />
-          <span className="text-blue">Something</span><br />
+          Let&rsquo;s Build
+          <br />
+          <span className="text-blue">Something</span>
+          <br />
           Together.
         </h1>
 
@@ -126,7 +143,6 @@ export default function ContactPage() {
       {/* ── Main content ──────────────────────────────────────── */}
       <section className="bg-white">
         <div className="grid lg:grid-cols-2 min-h-180">
-
           {/* Left — Form column */}
           <div
             ref={formElRef}
@@ -139,7 +155,10 @@ export default function ContactPage() {
                 </div>
                 <h2
                   className="font-extrabold text-[#0a0e1a]"
-                  style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontFamily: "var(--font-montserrat)" }}
+                  style={{
+                    fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+                    fontFamily: "var(--font-montserrat)",
+                  }}
                 >
                   Message Received
                 </h2>
@@ -160,7 +179,10 @@ export default function ContactPage() {
                   </p>
                   <h2
                     className="font-extrabold text-[#0a0e1a] leading-tight"
-                    style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", fontFamily: "var(--font-montserrat)" }}
+                    style={{
+                      fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)",
+                      fontFamily: "var(--font-montserrat)",
+                    }}
                   >
                     We&rsquo;re Listening
                   </h2>
@@ -168,13 +190,33 @@ export default function ContactPage() {
 
                 {/* Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Field label="Full Name" name="name" type="text" value={fields.name} onChange={handleChange} required />
-                  <Field label="Email Address" name="email" type="email" value={fields.email} onChange={handleChange} required />
+                  <Field
+                    label="Full Name"
+                    name="name"
+                    type="text"
+                    value={fields.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Field
+                    label="Email Address"
+                    name="email"
+                    type="email"
+                    value={fields.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 {/* Phone + Interest */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Field label="Phone (optional)" name="phone" type="tel" value={fields.phone} onChange={handleChange} />
+                  <Field
+                    label="Phone (optional)"
+                    name="phone"
+                    type="tel"
+                    value={fields.phone}
+                    onChange={handleChange}
+                  />
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[11px] font-semibold tracking-[0.15em] uppercase text-gray-500">
                       I&rsquo;m interested in
@@ -187,7 +229,9 @@ export default function ContactPage() {
                     >
                       <option value="">Select one…</option>
                       {interests.map((i) => (
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}>
+                          {i}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -218,7 +262,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className={`self-start px-9 py-3.5 text-[12px] font-bold tracking-[0.15em] uppercase text-[#07090f] border-none transition-colors ${status === "sending" ? "bg-gray-400 cursor-not-allowed" : "bg-blue cursor-pointer"}`}
+                  className={`self-start px-9 py-3.5 text-[12px] font-bold tracking-[0.15em] uppercase text-ink border-none transition-colors ${status === "sending" ? "bg-gray-400 cursor-not-allowed" : "bg-blue cursor-pointer"}`}
                 >
                   {status === "sending" ? "Sending…" : "Send Message"}
                 </button>
@@ -248,7 +292,11 @@ export default function ContactPage() {
                     <a
                       href={c.href}
                       className="text-[13px] font-semibold text-[#0a0e1a] no-underline leading-snug block"
-                      style={c.mono ? { fontFamily: "'Courier New', monospace" } : undefined}
+                      style={
+                        c.mono
+                          ? { fontFamily: "'Courier New', monospace" }
+                          : undefined
+                      }
                     >
                       {c.value}
                     </a>
@@ -278,9 +326,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Office hours strip ────────────────────────────────── */}
-      <section
-        className="bg-[#07090f] px-6 lg:px-24 py-7 flex items-center justify-between flex-wrap gap-4 border-t border-blue/10"
-      >
+      <section className="bg-ink px-6 lg:px-24 py-7 flex items-center justify-between flex-wrap gap-4 border-t border-blue/10">
         <p className="text-xs tracking-[0.08em] text-white/35">
           <span className="text-blue font-semibold">Office Hours</span>
           &nbsp;&nbsp;Monday – Friday &bull; 9:00 AM – 5:00 PM GMT

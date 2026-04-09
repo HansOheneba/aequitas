@@ -166,7 +166,7 @@ export default function AlumniStories() {
             <h2 className="text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-tight">
               Alumni
               <br />
-              <span className="text-[#37c5f3]">Stories</span>
+              <span className="text-blue">Stories</span>
             </h2>
           </div>
           {/* Large ghost counter */}
@@ -183,7 +183,7 @@ export default function AlumniStories() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr]">
           {/* Left — copy */}
           <div
-            className={`px-8 md:px-16 lg:px-24 pb-16 pt-2 flex flex-col justify-between min-h-[360px] transition-all duration-280 ease-out ${
+            className={`px-8 md:px-16 lg:px-24 pb-16 pt-2 flex flex-col justify-between min-h-90 transition-all duration-280 ease-out ${
               fading ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"
             }`}
           >
@@ -196,12 +196,12 @@ export default function AlumniStories() {
               >
                 &ldquo;
               </span>
-              <blockquote className="text-[clamp(1.1rem,2vw,1.5rem)] font-light leading-[1.6] text-white/80 max-w-[440px] mb-10">
+              <blockquote className="text-[clamp(1.1rem,2vw,1.5rem)] font-light leading-[1.6] text-white/80 max-w-110 mb-10">
                 {current.quote}
               </blockquote>
             </div>
             <div>
-              <div className="w-8 h-px bg-[#37c5f3] mb-5" />
+              <div className="w-8 h-px bg-blue mb-5" />
               <p className="text-white font-semibold text-base mb-1">
                 {current.name}
               </p>
@@ -224,19 +224,19 @@ export default function AlumniStories() {
           <button
             onClick={() => setModalId(current.id)}
             aria-label={`Watch ${current.name}'s story`}
-            className={`relative overflow-hidden group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00b4d8] transition-opacity duration-280 min-h-[360px] lg:min-h-0 ${
+            className={`relative overflow-hidden group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00b4d8] transition-opacity duration-280 min-h-90 lg:min-h-0 ${
               fading ? "opacity-0" : "opacity-100"
             }`}
           >
             {/* Thumbnail image */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-[5000ms] ease-in-out group-hover:scale-[1.04]"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-5000 ease-in-out group-hover:scale-[1.04]"
               style={{ backgroundImage: `url('${thumb(current.id)}')` }}
             />
             {/* Left vignette to blend into the dark left panel */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0c0f18]/70 via-[#0c0f18]/10 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-r from-[#0c0f18]/70 via-[#0c0f18]/10 to-transparent" />
             {/* Bottom vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0c0f18]/50 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0c0f18]/50 to-transparent" />
             {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="transition-all duration-300 ease-out scale-90 opacity-70 group-hover:scale-100 group-hover:opacity-100">
@@ -247,12 +247,12 @@ export default function AlumniStories() {
         </div>
 
         {/* ── Filmstrip + controls ──────────────────────────────────────── */}
-        <div className="px-8 md:px-16 lg:px-24 py-10 border-t border-white/[0.06]">
+        <div className="px-8 md:px-16 lg:px-24 py-10 border-t border-white/6">
           <div className="flex items-center gap-4">
             <button
               onClick={prev}
               aria-label="Previous story"
-              className="flex-shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
+              className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
             >
               <ChevronIcon dir="left" />
             </button>
@@ -285,14 +285,14 @@ export default function AlumniStories() {
             <button
               onClick={next}
               aria-label="Next story"
-              className="flex-shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
+              className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all duration-200"
             >
               <ChevronIcon dir="right" />
             </button>
           </div>
 
           {/* Progress track */}
-          <div className="mt-6 h-px bg-white/[0.08] relative overflow-hidden rounded-full">
+          <div className="mt-6 h-px bg-white/8 relative overflow-hidden rounded-full">
             <div
               className="absolute inset-y-0 left-0 bg-[#00b4d8] transition-all duration-700 ease-out rounded-full"
               style={{

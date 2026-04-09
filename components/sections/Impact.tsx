@@ -161,7 +161,7 @@ export default function Impact() {
   return (
     <section id="impact" className="bg-[#05080f] text-white overflow-hidden">
       {/* ── Header ──────────────────────────────────────────────────────── */}
-      <div className="flex items-end justify-between px-8 md:px-16 lg:px-24 pt-20 pb-0 border-b border-white/[0.06]">
+      <div className="flex items-end justify-between px-8 md:px-16 lg:px-24 pt-20 pb-0 border-b border-white/6">
         <div className="pb-12">
           <p className="text-[10px] tracking-[0.3em] uppercase text-[#00b4d8] mb-3">
             Our Impact
@@ -169,7 +169,7 @@ export default function Impact() {
           <h2 className="text-[clamp(2.6rem,5vw,4.5rem)] font-bold leading-[0.95] tracking-tight">
             Numbers That
             <br />
-            <span className="text-[#37c5f3]">Tell a Story</span>
+            <span className="text-blue">Tell a Story</span>
           </h2>
         </div>
         <span
@@ -184,12 +184,12 @@ export default function Impact() {
       {/* ── Stats grid ──────────────────────────────────────────────────── */}
       <div
         ref={statsRef}
-        className="grid grid-cols-2 md:grid-cols-3 border-b border-white/[0.06]"
+        className="grid grid-cols-2 md:grid-cols-3 border-b border-white/6"
       >
         {STATS.map((s, i) => (
           <div
             key={s.label}
-            className="group relative px-8 md:px-12 py-12 border-b border-r border-white/[0.06] last:border-r-0 md:odd:border-r even:border-r-0 md:even:border-r overflow-hidden"
+            className="group relative px-8 md:px-12 py-12 border-b border-r border-white/6 last:border-r-0 md:odd:border-r even:border-r-0 md:even:border-r overflow-hidden"
             style={{
               opacity: statsVisible ? 1 : 0,
               transform: statsVisible ? "translateY(0)" : "translateY(24px)",
@@ -197,7 +197,7 @@ export default function Impact() {
             }}
           >
             {/* Hover cyan blush */}
-            <div className="absolute inset-0 bg-[#00b4d8]/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-[#00b4d8]/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative">
               <div className="text-[clamp(2.5rem,4vw,4rem)] font-black leading-none tabular-nums text-white mb-2 tracking-tight">
@@ -221,24 +221,24 @@ export default function Impact() {
 
       {/* ── Timeline ────────────────────────────────────────────────────── */}
       <div className="px-8 md:px-16 lg:px-24 pt-20 pb-24">
-        <div className="flex items-end gap-8 mb-14 pb-6 border-b border-white/[0.06]">
+        <div className="flex items-end gap-8 mb-14 pb-6 border-b border-white/6">
           <div>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-[#37c5f3] mb-3">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-blue mb-3">
               Milestones
             </p>
             <h3 className="text-[clamp(1.8rem,3vw,3rem)] font-bold leading-none tracking-tight">
               Our Journey
             </h3>
           </div>
-          <div className="h-px flex-1 bg-white/[0.06] mb-2" />
+          <div className="h-px flex-1 bg-white/6 mb-2" />
         </div>
 
         <div ref={timelineRef} className="relative">
           {/* Vertical rail */}
-          <div className="absolute left-[5.5rem] top-0 bottom-0 w-px bg-white/[0.06] hidden md:block" />
+          <div className="absolute left-22 top-0 bottom-0 w-px bg-white/6 hidden md:block" />
           {/* Animated fill */}
           <div
-            className="absolute left-[5.5rem] top-0 w-px bg-[#00b4d8] hidden md:block transition-all duration-700 ease-out"
+            className="absolute left-22 top-0 w-px bg-[#00b4d8] hidden md:block transition-all duration-700 ease-out"
             style={{
               height:
                 timelineStep >= 0
@@ -252,7 +252,7 @@ export default function Impact() {
               <li
                 key={m.year}
                 data-tl
-                className="group relative flex items-start gap-8 md:gap-12 py-8 border-b border-white/[0.04] last:border-0"
+                className="group relative flex items-start gap-8 md:gap-12 py-8 border-b border-white/4 last:border-0"
                 style={{
                   opacity: i <= timelineStep ? 1 : 0,
                   transform:
@@ -262,7 +262,7 @@ export default function Impact() {
               >
                 {/* Year */}
                 <div className="shrink-0 w-20 text-right hidden md:block">
-                  <span className="text-[clamp(0.85rem,1.2vw,1rem)] font-black tracking-widest tabular-nums text-white/20 group-hover:text-[#37c5f3] transition-colors duration-300">
+                  <span className="text-[clamp(0.85rem,1.2vw,1rem)] font-black tracking-widest tabular-nums text-white/20 group-hover:text-blue transition-colors duration-300">
                     {m.year}
                   </span>
                 </div>
@@ -272,13 +272,13 @@ export default function Impact() {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <span className="block md:hidden text-[10px] font-black tracking-widest text-[#37c5f3] mb-1">
+                  <span className="block md:hidden text-[10px] font-black tracking-widest text-blue mb-1">
                     {m.year}
                   </span>
                   <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-white/40 group-hover:text-[#00b4d8] transition-colors duration-300 mb-1.5">
                     {m.title}
                   </p>
-                  <p className="text-[15px] text-white/60 leading-[1.7] max-w-[520px]">
+                  <p className="text-[15px] text-white/60 leading-[1.7] max-w-130">
                     {m.body}
                   </p>
                 </div>

@@ -46,119 +46,61 @@ const testimonials = [
 ];
 
 function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+  const elRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) setVisible(true);
-      },
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
       { threshold: 0.1 },
     );
-    if (ref.current) io.observe(ref.current);
+    if (elRef.current) io.observe(elRef.current);
     return () => io.disconnect();
   }, []);
-  return { ref, visible };
+  return { elRef, visible };
 }
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const { ref, visible } = useReveal();
+  const { elRef, visible } = useReveal();
   const t = testimonials[active];
 
-  const prev = () =>
-    setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
+  const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
   const next = () => setActive((p) => (p + 1) % testimonials.length);
 
   return (
-    <section id="testimonials" style={{ background: "#f9f6f1" }}>
-      <div className="px-8 md:px-16 lg:px-24 py-28" ref={ref}>
+    <section id="testimonials" className="bg-cream">
+      <div className="px-8 md:px-16 lg:px-24 py-28" ref={elRef}>
+
         {/* Header row */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            alignItems: "flex-end",
-            borderBottom: "1px solid #e5e7eb",
-            paddingBottom: 32,
-            marginBottom: 64,
-            opacity: visible ? 1 : 0,
-            transform: visible ? "none" : "translateY(20px)",
-            transition: "opacity 0.7s ease, transform 0.7s ease",
-          }}
+          className={`grid grid-cols-[1fr_auto] items-end border-b border-gray-200 pb-8 mb-16 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <div>
-            <p
-              style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                letterSpacing: "0.25em",
-                textTransform: "uppercase",
-                color: "#37c5f3",
-                marginBottom: 12,
-              }}
-            >
+            <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-blue mb-3">
               Testimonials
             </p>
             <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                fontWeight: 800,
-                lineHeight: 1.05,
-                color: "#0a0e1a",
-                fontFamily: "var(--font-montserrat)",
-              }}
+              className="font-extrabold leading-[1.05] text-dark"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontFamily: "var(--font-montserrat)" }}
             >
-              Voices of <span style={{ color: "#37c5f3" }}>Change</span>
+              Voices of <span className="text-blue">Change</span>
             </h2>
           </div>
 
           {/* Nav arrows */}
-          <div style={{ display: "flex", gap: 8 }}>
+          <div className="flex gap-2">
             {[prev, next].map((fn, i) => (
               <button
                 key={i}
                 onClick={fn}
-                style={{
-                  width: 44,
-                  height: 44,
-                  border: "1.5px solid #d1d5db",
-                  background: "transparent",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "border-color 0.2s, background 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor =
-                    "#37c5f3";
-                  (e.currentTarget as HTMLButtonElement).style.background =
-                    "#37c5f3";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor =
-                    "#d1d5db";
-                  (e.currentTarget as HTMLButtonElement).style.background =
-                    "transparent";
-                }}
+                className="w-11 h-11 border border-gray-300 bg-transparent flex items-center justify-center cursor-pointer hover:border-blue hover:bg-blue transition-[border-color,background-color] duration-200"
                 aria-label={i === 0 ? "Previous" : "Next"}
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   {i === 0 ? (
-                    <path
-                      d="M9 2L4 7l5 5"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="square"
-                    />
+                    <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
                   ) : (
-                    <path
-                      d="M5 2l5 5-5 5"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="square"
-                    />
+                    <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
                   )}
                 </svg>
               </button>
@@ -168,61 +110,31 @@ export default function Testimonials() {
 
         {/* Quote block */}
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(40px, 6vw, 96px)",
-            alignItems: "center",
-            opacity: visible ? 1 : 0,
-            transform: visible ? "none" : "translateY(28px)",
-            transition: "opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
+          className={`grid md:grid-cols-2 items-center transition-all duration-700 delay-150 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-7"}`}
+          style={{ gap: "clamp(40px, 6vw, 96px)" }}
         >
           {/* Left — giant quote */}
-          <div style={{ position: "relative" }}>
-            {/* Big quote mark */}
+          <div className="relative">
             <div
-              style={{
-                fontSize: "clamp(120px, 15vw, 180px)",
-                lineHeight: 0.8,
-                fontWeight: 900,
-                color: "rgba(55,197,243,0.08)",
-                fontFamily: "Georgia, serif",
-                marginBottom: -20,
-                userSelect: "none",
-              }}
+              className="font-black leading-[0.8] select-none text-blue/8 font-serif -mb-5"
+              style={{ fontSize: "clamp(120px, 15vw, 180px)" }}
             >
               &ldquo;
             </div>
             <blockquote
-              style={{
-                fontSize: "clamp(1.1rem, 1.8vw, 1.45rem)",
-                lineHeight: 1.7,
-                fontWeight: 500,
-                color: "#1a1f2e",
-                marginBottom: 40,
-                fontFamily: "var(--font-source-sans)",
-              }}
+              className="font-medium text-[#1a1f2e] mb-10"
+              style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.45rem)", lineHeight: 1.7 }}
             >
               {t.quote}
             </blockquote>
 
             {/* Dots */}
-            <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
+            <div className="flex gap-1.5 mt-2">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  style={{
-                    width: i === active ? 24 : 8,
-                    height: 8,
-                    background: i === active ? "#37c5f3" : "#d1d5db",
-                    border: "none",
-                    cursor: "pointer",
-                    transition: "width 0.3s, background 0.3s",
-                    padding: 0,
-                  }}
+                  className={`h-2 border-none cursor-pointer p-0 transition-[width,background-color] duration-300 ${i === active ? "w-6 bg-blue" : "w-2 bg-gray-300"}`}
                   aria-label={`Testimonial ${i + 1}`}
                 />
               ))}
@@ -230,97 +142,47 @@ export default function Testimonials() {
           </div>
 
           {/* Right — speaker card */}
-          <div>
-            <div
-              style={{
-                background: "white",
-                padding: "40px 36px",
-                borderLeft: "3px solid #37c5f3",
-              }}
-            >
-              {/* Stars */}
-              <div style={{ display: "flex", gap: 3, marginBottom: 24 }}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg
-                    key={i}
-                    width="14"
-                    height="14"
-                    viewBox="0 0 20 20"
-                    fill="#37c5f3"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-
-              {/* Initials */}
-              <div
-                style={{
-                  width: 56,
-                  height: 56,
-                  border: "2px solid #37c5f3",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 20,
-                  fontFamily: "'Courier New', monospace",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  color: "#37c5f3",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                {t.initials}
-              </div>
-
-              <p
-                style={{
-                  fontSize: "17px",
-                  fontWeight: 700,
-                  color: "#0a0e1a",
-                  marginBottom: 4,
-                  fontFamily: "var(--font-montserrat)",
-                }}
-              >
-                {t.name}
-              </p>
-              <p
-                style={{ fontSize: "12px", color: "#6b7280", marginBottom: 16 }}
-              >
-                {t.title}
-              </p>
-              <span
-                style={{
-                  display: "inline-block",
-                  padding: "4px 12px",
-                  background: "rgba(55,197,243,0.08)",
-                  border: "1px solid rgba(55,197,243,0.2)",
-                  fontSize: "10px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  color: "#37c5f3",
-                }}
-              >
-                {t.program}
-              </span>
-
-              {/* Index */}
-              <p
-                style={{
-                  marginTop: 32,
-                  fontFamily: "'Courier New', monospace",
-                  fontSize: "11px",
-                  color: "#d1d5db",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                {String(active + 1).padStart(2, "0")} /{" "}
-                {String(testimonials.length).padStart(2, "0")}
-              </p>
+          <div className="bg-white py-10 px-9 border-l-[3px] border-blue">
+            {/* Stars */}
+            <div className="flex gap-1 mb-6">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg key={i} width="14" height="14" viewBox="0 0 20 20" fill="currentColor" className="text-blue">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
             </div>
+
+            {/* Initials */}
+            <div
+              className="w-14 h-14 border-2 border-blue flex items-center justify-center text-blue font-bold text-base mb-5"
+              style={{ fontFamily: "'Courier New', monospace", letterSpacing: "0.05em" }}
+            >
+              {t.initials}
+            </div>
+
+            <p
+              className="text-[17px] font-bold text-dark mb-1"
+              style={{ fontFamily: "var(--font-montserrat)" }}
+            >
+              {t.name}
+            </p>
+            <p className="text-xs text-gray-500 mb-4">{t.title}</p>
+
+            <span className="inline-block px-3 py-1 bg-blue/10 border border-blue/20 text-[10px] font-bold tracking-[0.15em] uppercase text-blue">
+              {t.program}
+            </span>
+
+            {/* Index */}
+            <p
+              className="mt-8 text-[11px] text-gray-300 tracking-widest"
+              style={{ fontFamily: "'Courier New', monospace" }}
+            >
+              {String(active + 1).padStart(2, "0")} /{" "}
+              {String(testimonials.length).padStart(2, "0")}
+            </p>
           </div>
         </div>
+
       </div>
     </section>
   );

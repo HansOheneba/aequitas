@@ -145,7 +145,7 @@ export default function AequitasSection() {
           {/* Col 1 — Aequitas Experience */}
           <div className="relative bg-white px-12 py-20 flex flex-col justify-center lg:border-r border-gray-200 overflow-hidden">
             {/* Animated left accent bar */}
-            <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#00b4d8] origin-top scale-y-0 transition-transform duration-700 delay-300 data-[fade]:scale-y-100" />
+            <span className="absolute left-0 top-0 bottom-0 w-0.75 bg-[#00b4d8] origin-top scale-y-0 transition-transform duration-700 delay-300 data-fade:scale-y-100" />
 
             <Label>Our Programme</Label>
 
@@ -165,7 +165,7 @@ export default function AequitasSection() {
             <p
               data-fade
               style={{ ...fadeStyle, transitionDelay: "0.15s" }}
-              className="text-[15px] leading-[1.85] text-gray-400 font-light mb-10 max-w-[280px]"
+              className="text-[15px] leading-[1.85] text-gray-400 font-light mb-10 max-w-70"
             >
               A holistic programme contributing to the lifelong success of our
               youth through a resilience‑focused approach.
@@ -196,7 +196,7 @@ export default function AequitasSection() {
                     transitionDelay: `${i * 100}ms`,
                   }}
                 >
-                  <span className="text-[27px] font-semibold text-white/90 leading-none min-w-[26px]">
+                  <span className="text-[27px] font-semibold text-white/90 leading-none min-w-6.5">
                     {g.num}
                   </span>
                   <span className="text-[9.5px] font-medium tracking-wide uppercase text-white/85 leading-[1.45] pt-0.5 whitespace-pre-line">
@@ -208,22 +208,22 @@ export default function AequitasSection() {
           </div>
 
           {/* Col 3 — Gifts for Christ (image bg) */}
-          <div className="relative overflow-hidden flex flex-col justify-end px-10 py-16 min-h-[380px] bg-[#0d1117] group">
+          <div className="relative overflow-hidden flex flex-col justify-end px-10 py-16 min-h-95 bg-[#0d1117] group">
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-[6000ms] ease-in-out group-hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-6000 ease-in-out group-hover:scale-105"
               style={{
                 backgroundImage: `url('${IMG_CONCERT}')`,
                 opacity: 0.38,
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117]/95 via-[#0d1117]/50 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0d1117]/95 via-[#0d1117]/50 to-transparent" />
 
             <div className="relative z-10">
               <Label light>Annual Event</Label>
               <h2 className="text-3xl xl:text-[36px] font-light text-white leading-[1.2] mb-3">
                 Gifts for Christ
               </h2>
-              <p className="text-[14px] leading-[1.75] text-white/60 font-light mb-7 max-w-[260px]">
+              <p className="text-[14px] leading-[1.75] text-white/60 font-light mb-7 max-w-65">
                 An annual musical concert raising funds to improve the
                 employability of youth across Africa.
               </p>
@@ -235,16 +235,16 @@ export default function AequitasSection() {
         {/* ════════════════ ROW 2 — quote + mission ═════════════════════════ */}
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Quote panel — full-bleed Unsplash image */}
-          <div className="relative overflow-hidden min-h-[500px] flex items-end group">
+          <div className="relative overflow-hidden min-h-125 flex items-end group">
             {/* Unsplash: warm golden-hour youth / Africa / aspiration */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-[7000ms] ease-in-out group-hover:scale-105"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-7000 ease-in-out group-hover:scale-105"
               style={{ backgroundImage: `url('${IMG_QUOTE}')` }}
             />
             {/* Rich dark gradient so text is always legible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0d14] via-[#0a0d14]/55 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0a0d14] via-[#0a0d14]/55 to-transparent" />
             {/* Subtle cyan blush at base */}
-            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#00b4d8]/08 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-[#00b4d8]/08 to-transparent" />
 
             <div className="relative z-10 px-12 lg:px-14 py-14">
               {/* Giant decorative quote mark */}
@@ -273,7 +273,7 @@ export default function AequitasSection() {
               <span
                 data-fade
                 style={{ ...fadeStyle, transitionDelay: "0.35s" }}
-                className="block w-10 h-[2px] bg-[#00b4d8]"
+                className="block w-10 h-0.5 bg-[#00b4d8]"
               />
             </div>
           </div>
@@ -324,7 +324,7 @@ export default function AequitasSection() {
             <p
               data-fade
               style={{ ...fadeStyle, transitionDelay: "0.12s" }}
-              className="text-[15px] leading-[1.9] text-gray-400 font-light mb-10 max-w-[420px]"
+              className="text-[15px] leading-[1.9] text-gray-400 font-light mb-10 max-w-105"
             >
               Founded in 2018 as a faith‑based non‑profit, we believe suitable
               training within a safe and enabling environment gives every young

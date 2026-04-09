@@ -109,7 +109,7 @@ export default function GalleryPage() {
             >
               {/* Gradient placeholder — replace with next/image when real photos are ready */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-[#2596be]/20 via-navy/30 to-navy"
+                className="absolute inset-0 bg-linear-to-br from-[#2596be]/20 via-navy/30 to-navy"
                 style={{
                   background: `linear-gradient(${135 + img.id * 20}deg, #2596be${Math.floor(50 + img.id * 15).toString(16)} 0%, #0a1a3a 100%)`,
                 }}
