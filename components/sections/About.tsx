@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const SDG_GOALS = [
-  { num: "4", label: "Quality\nEducation", bg: "bg-[#E5243B]" },
-  { num: "8", label: "Decent Work &\nEconomic Growth", bg: "bg-[#A21942]" },
-  { num: "10", label: "Reduced\nInequalities", bg: "bg-[#DD1367]" },
-  { num: "17", label: "Partnerships\nfor the Goals", bg: "bg-[#19486A]" },
+  { num: "4",  label: "Quality Education",              src: "/sdg/sdg-4.png"  },
+  { num: "8",  label: "Decent Work & Economic Growth",  src: "/sdg/sdg-8.png"  },
+  { num: "10", label: "Reduced Inequalities",           src: "/sdg/sdg-10.png" },
+  { num: "17", label: "Partnerships for the Goals",     src: "/sdg/sdg-17.png" },
 ];
 
 // Unsplash direct-source URLs (stable, free, no attribution required for demos)
 const IMG_CONCERT =
-  "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80";
-// African youth / students / aspiration — warm, golden-hour, hopeful
+  "/gallery/2024gifts4christ/MG_8677-scaled.jpg";
 const IMG_QUOTE =
-  "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1000&q=85";
+  "/gallery/aeq-expereince/MG_0816-scaled.webp";
 
 /* ── Arrow icon ───────────────────────────────────────────────────────────── */
 function Arrow() {
@@ -39,7 +39,7 @@ function Arrow() {
 
 /* ── Reusable CTA link ────────────────────────────────────────────────────── */
 function LinkBtn({
-  href = "#",
+  href = "/programs/aequitas-experience",
   light = false,
   children,
 }: {
@@ -189,19 +189,21 @@ export default function AequitasSection() {
               {SDG_GOALS.map((g, i) => (
                 <div
                   key={g.num}
-                  className={`${g.bg} rounded p-3.5 flex items-start gap-2.5 cursor-default hover:brightness-110 transition-all duration-500`}
+                  className="relative overflow-hidden cursor-default transition-all duration-500 hover:scale-[1.03]"
                   style={{
                     opacity: sdgIn ? 1 : 0,
                     transform: sdgIn ? "translateY(0)" : "translateY(16px)",
                     transitionDelay: `${i * 100}ms`,
                   }}
+                  title={g.label}
                 >
-                  <span className="text-[27px] font-semibold text-white/90 leading-none min-w-6.5">
-                    {g.num}
-                  </span>
-                  <span className="text-[9.5px] font-medium tracking-wide uppercase text-white/85 leading-[1.45] pt-0.5 whitespace-pre-line">
-                    {g.label}
-                  </span>
+                  <Image
+                    src={g.src}
+                    alt={g.label}
+                    width={200}
+                    height={200}
+                    className="w-full h-auto block"
+                  />
                 </div>
               ))}
             </div>

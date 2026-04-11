@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
@@ -46,8 +47,8 @@ const programsMenu = [
     description: "Community giving initiatives every season",
   },
   {
-    label: "Alumni Form",
-    href: "/programs/alumni-form",
+    label: "Alumni Forum",
+    href: "/apply",
     description: "Stay connected with our growing network",
   },
 ];
@@ -66,9 +67,31 @@ const navItems: NavItem[] = [
   { label: "Our Programs", megaMenu: programsMenu },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
-  { label: "Donate", href: "/contact" },
+  { label: "Donate", href: "/donate" },
   { label: "2030 Goal", href: "/2030-goal" },
 ];
+
+/* ── Active-label helper (used for the sliding indicator) ──────── */
+function getActiveLabel(pathname: string): string | null {
+  for (const item of navItems) {
+    if (item.href) {
+      const match =
+        item.href === "/"
+          ? pathname === "/"
+          : pathname === item.href || pathname.startsWith(item.href + "/");
+      if (match) return item.label;
+    } else if (item.megaMenu) {
+      const hit = item.megaMenu.some(
+        (s) =>
+          s.href.startsWith("/") &&
+          !s.href.includes("#") &&
+          (pathname === s.href || pathname.startsWith(s.href + "/")),
+      );
+      if (hit) return item.label;
+    }
+  }
+  return null;
+}
 
 /* ── Single row inside mega menu ───────────────────────────────── */
 function MegaItem({ item }: { item: MegaItem }) {
@@ -160,6 +183,38 @@ export default function Header() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
+  const itemRefs = useRef<Record<string, HTMLElement | null>>({});
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+  const activeLabel = getActiveLabel(pathname);
+
+  /* measure + position the sliding indicator */
+  const measureIndicator = useRef(() => {});
+  useLayoutEffect(() => {
+    const el = activeLabel ? itemRefs.current[activeLabel] : null;
+    const nav = navRef.current;
+    if (!el || !nav) return;
+    const nr = nav.getBoundingClientRect();
+    const er = el.getBoundingClientRect();
+    setIndicator({ left: er.left - nr.left, width: er.width });
+  }, [pathname, activeLabel]);
+
+  useEffect(() => {
+    measureIndicator.current = () => {
+      const el = activeLabel ? itemRefs.current[activeLabel] : null;
+      const nav = navRef.current;
+      if (!el || !nav) return;
+      const nr = nav.getBoundingClientRect();
+      const er = el.getBoundingClientRect();
+      setIndicator({ left: er.left - nr.left, width: er.width });
+    };
+  });
+
+  useEffect(() => {
+    const onResize = () => measureIndicator.current();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   /* scroll detection */
   useEffect(() => {
@@ -217,7 +272,7 @@ export default function Header() {
             : "1px solid transparent",
         }}
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="mx-auto px-6 md:px-16 lg:px-24">
           <div className="flex items-center justify-between h-18">
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0">
@@ -227,33 +282,41 @@ export default function Header() {
                 width={160}
                 height={44}
                 className="h-9 w-auto object-contain"
-                style={{ width: 'auto', height: '36px' }}
+                style={{ width: "auto", height: "36px" }}
                 priority
               />
             </Link>
 
             {/* Desktop Nav */}
-            <nav ref={navRef} className="hidden md:flex items-center gap-0.5">
+            <nav
+              ref={navRef}
+              className="hidden md:flex items-center gap-0.5 relative"
+            >
               {navItems.map((item) => {
                 if (item.megaMenu) {
                   const isOpen = openMenu === item.label;
+                  const isActive = getActiveLabel(pathname) === item.label;
                   return (
                     <div
                       key={item.label}
-                      className="relative"
+                      className="relative flex items-center"
+                      ref={(el) => {
+                        itemRefs.current[item.label] = el;
+                      }}
                       onMouseEnter={() => handleEnter(item.label)}
                       onMouseLeave={handleLeave}
                     >
                       <button
                         onClick={() => setOpenMenu(isOpen ? null : item.label)}
-                        className="group flex items-center gap-1.5 px-3.5 py-2 transition-colors duration-200"
+                        className="group flex items-center gap-1.5 px-3.5 py-2 h-full transition-colors duration-200"
                         style={{
                           fontSize: 13,
                           fontWeight: 500,
                           letterSpacing: "0.04em",
-                          color: isOpen
-                            ? "rgba(255,255,255,1)"
-                            : "rgba(255,255,255,0.6)",
+                          color:
+                            isOpen || isActive
+                              ? "rgba(255,255,255,1)"
+                              : "rgba(255,255,255,0.6)",
                         }}
                         aria-expanded={isOpen}
                         aria-haspopup="true"
@@ -280,24 +343,50 @@ export default function Header() {
                 }
 
                 const is2030 = item.label === "2030 Goal";
+                const isActive = getActiveLabel(pathname) === item.label;
                 return (
-                  <Link
+                  <div
                     key={item.label}
-                    href={item.href!}
-                    className="px-3.5 py-2 transition-colors duration-200"
-                    style={{
-                      fontSize: 13,
-                      fontWeight: is2030 ? 600 : 500,
-                      letterSpacing: "0.04em",
-                      color: is2030
-                        ? "var(--color-blue)"
-                        : "rgba(255,255,255,0.6)",
+                    ref={(el) => {
+                      itemRefs.current[item.label] = el;
                     }}
+                    className="flex items-center"
                   >
-                    {item.label}
-                  </Link>
+                    <Link
+                      href={item.href!}
+                      className="px-3.5 py-2 transition-colors duration-200"
+                      style={{
+                        fontSize: 13,
+                        fontWeight: is2030 ? 600 : 500,
+                        letterSpacing: "0.04em",
+                        color: is2030
+                          ? "var(--color-blue)"
+                          : isActive
+                            ? "rgba(255,255,255,1)"
+                            : "rgba(255,255,255,0.6)",
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
                 );
               })}
+
+              {/* Sliding active-page indicator */}
+              <div
+                aria-hidden
+                className="absolute pointer-events-none"
+                style={{
+                  left: indicator.left,
+                  width: indicator.width,
+                  bottom: -6,
+                  height: 2,
+                  background: "var(--color-blue)",
+                  opacity: activeLabel ? 1 : 0,
+                  transition:
+                    "left 450ms cubic-bezier(0.34,1.56,0.64,1), width 400ms cubic-bezier(0.34,1.56,0.64,1), opacity 200ms ease",
+                }}
+              />
             </nav>
 
             {/* Desktop CTA — Apply button */}

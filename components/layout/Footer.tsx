@@ -3,6 +3,16 @@ import Image from "next/image";
 import SocialLinks from "@/components/shared/SocialLinks";
 import Container from "@/components/ui/Container";
 
+const MEDIA_PARTNERS = [
+  {
+    name: "Graphic News Plus",
+    href: "https://graphicnewsplus.com/",
+    src: "https://graphicnewsplus.com/wp-content/uploads/2023/07/GNP-Banner-970x90.jpg",
+    width: 970,
+    height: 90,
+  },
+];
+
 const footerLinks = {
   foundation: [
     { label: "About Us", href: "#about" },
@@ -13,7 +23,7 @@ const footerLinks = {
   ],
   getInvolved: [
     { label: "Apply", href: "/apply" },
-    { label: "Donate", href: "/contact" },
+    { label: "Donate", href: "/donate" },
     { label: "Volunteer", href: "/contact" },
     { label: "Partner With Us", href: "/contact" },
     { label: "Sponsor a Scholar", href: "/contact" },
@@ -33,7 +43,7 @@ export default function Footer() {
     <footer className="bg-navy-dark text-gray-300">
       {/* Main footer */}
       <div className="border-t border-white/10">
-        <Container className="py-16">
+        <Container className="pt-12 pb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand */}
             <div className="lg:col-span-1">
@@ -41,13 +51,11 @@ export default function Footer() {
                 <Image
                   src="/logo-aeq.png"
                   alt="Aequitas Foundation"
-                  width={44}
-                  height={44}
+                  width={200}
+                  height={200}
                   className="object-contain"
                 />
-                <span className="text-white font-bold text-lg font-heading tracking-wide">
-                  Aequitas Foundation
-                </span>
+               
               </Link>
               <p className="text-sm leading-relaxed text-gray-400 mb-6">
                 Transforming lives through faith, education, and opportunity.
@@ -115,6 +123,37 @@ export default function Footer() {
           </div>
         </Container>
       </div>
+
+      {/* Media partners strip */}
+      {MEDIA_PARTNERS.length > 0 && (
+        <div className="border-t border-white/10 px-6 md:px-16 lg:px-24 py-6">
+          <p className="text-[9px] font-semibold tracking-[0.22em] uppercase text-white/20 mb-4">
+            Media Partners
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
+            {MEDIA_PARTNERS.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block opacity-40 hover:opacity-70 transition-opacity duration-200"
+                aria-label={p.name}
+                style={{ maxWidth: 220 }}
+              >
+                <Image
+                  src={p.src}
+                  alt={p.name}
+                  width={p.width}
+                  height={p.height}
+                  style={{ width: "100%", height: "auto" }}
+                  unoptimized
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">

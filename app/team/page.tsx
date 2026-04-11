@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 /* ── Data ─────────────────────────────────────────────────────────────────── */
@@ -9,24 +10,28 @@ const BOARD = [
     name: "Prof. Alexander Dodoo",
     role: "Board Chairman",
     initial: "AD",
+    image: "/team/alex-dodoo.jpg",
     bio: "Brings decades of institutional leadership spanning academia, governance, and civil society, providing Aequitas with strategic oversight and counsel.",
   },
   {
     name: "Rev'd Akua Ofori-Boateng",
     role: "Executive Director",
     initial: "AO",
+    image: "/team/Rev'd-Akua-Ofori-Boateng.jpg",
     bio: "Theologian, educator, and social entrepreneur with over 20 years in community development across West Africa and the United States.",
   },
   {
     name: "Abdul Rahman Issah Dowuona",
     role: "Board Member",
     initial: "AR",
+    image: "/team/Abdul-Rahman-Issah-Dowuona.jpg",
     bio: "Brings a background in strategic development and youth advocacy, helping shape long-term programme design and community outreach strategy.",
   },
   {
     name: "Frimpomaa Ntiforo Agah",
     role: "Board Member & Director of Programs",
     initial: "FN",
+    image: "/team/Frimpomaa-Ntiforo-Agah.jpg",
     bio: "Bridges governance and operations — overseeing the full lifecycle of Aequitas programmes from design through impact assessment.",
   },
 ];
@@ -232,16 +237,15 @@ export default function TeamPage() {
               className="group border-b border-r border-gray-100 last:border-r-0 nth-[2n]:md:border-r-0 lg:nth-[2n]:border-r lg:nth-[4n]:border-r-0"
             >
               <div className="px-8 md:px-10 py-12 h-full flex flex-col">
-                {/* Initial avatar */}
-                <div
-                  className="w-14 h-14 flex items-center justify-center mb-8 text-[13px] font-bold tracking-widest transition-colors duration-300"
-                  style={{
-                    background: "transparent",
-                    border: "1px solid rgba(55,197,243,0.3)",
-                    color: "#37c5f3",
-                  }}
-                >
-                  {m.initial}
+                {/* Photo avatar */}
+                <div className="relative w-16 h-16 mb-8 overflow-hidden" style={{ border: "1px solid rgba(55,197,243,0.2)" }}>
+                  <Image
+                    src={m.image}
+                    alt={m.name}
+                    fill
+                    sizes="64px"
+                    className="object-cover object-top"
+                  />
                 </div>
 
                 {/* Index */}

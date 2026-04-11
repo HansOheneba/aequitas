@@ -97,7 +97,7 @@ export default function WhoWeArePage() {
           className="absolute inset-0 bg-cover bg-center opacity-35"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1800&q=85')",
+              "url('/gallery/aeq-expereince/MG_0924-scaled.webp')",
           }}
         />
         <div className="absolute inset-0 bg-linear-to-t from-[#0a0e1a] via-[#0a0e1a]/40 to-transparent" />

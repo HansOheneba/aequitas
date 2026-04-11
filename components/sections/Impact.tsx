@@ -4,75 +4,74 @@ import { useEffect, useRef, useState } from "react";
 
 const STATS = [
   {
-    value: "2,400",
+    value: "100",
     suffix: "+",
-    label: "Lives Transformed",
-    sub: "Individuals supported since 2012",
-    raw: 2400,
+    label: "Hours of Learning",
+    sub: "Experiential business learning per programme",
+    raw: 100,
   },
   {
-    value: "18",
+    value: "8",
     suffix: "",
-    label: "Active Programmes",
-    sub: "Running across 3 countries",
-    raw: 18,
+    label: "Cohorts Delivered",
+    sub: "Since inception in 2021",
+    raw: 8,
   },
   {
-    value: "3.2",
-    suffix: "M",
-    label: "Scholarships Awarded",
-    sub: "Total disbursed in 5 years",
-    prefix: "$",
-    raw: 3.2,
+    value: "118",
+    suffix: "+",
+    label: "Programme Graduates",
+    sub: "Across all Aequitas Experience cohorts",
+    raw: 118,
   },
   {
-    value: "94",
+    value: "60",
     suffix: "%",
-    label: "Completion Rate",
-    sub: "Of enrolled participants",
-    raw: 94,
+    label: "Female Participants",
+    sub: "Building gender equity in leadership",
+    raw: 60,
   },
   {
-    value: "320",
-    suffix: "+",
-    label: "Businesses Launched",
-    sub: "Through our incubator",
-    raw: 320,
+    value: "12",
+    suffix: "–24",
+    label: "Participants Per Cohort",
+    sub: "Intentionally small for maximum impact",
+    raw: 12,
   },
   {
-    value: "98",
+    value: "5",
     suffix: "",
-    label: "Volunteer Partners",
-    sub: "Active mentors & coaches",
-    raw: 98,
+    label: "Years of Impact",
+    sub: "Operating continuously since 2021",
+    raw: 5,
   },
 ];
 
 const MILESTONES = [
   {
-    year: "2012",
-    title: "Founded",
-    body: "Established with a first cohort of 12 scholars and a singular belief in equity.",
-  },
-  {
-    year: "2015",
-    title: "Startup Incubator",
-    body: "Launched in partnership with 3 financial institutions to back early-stage youth ventures.",
-  },
-  {
-    year: "2018",
-    title: "Pan-African Expansion",
-    body: "Scaled into Ghana and Nigeria — two countries, one vision.",
-  },
-  {
     year: "2021",
-    title: "1,000 Lives Milestone",
-    body: "Celebrated a thousand stories of transformation across our programmes.",
+    title: "Founded",
+    body: "Aequitas Foundation launched its first cohort of the Aequitas Experience — 12 to 24 young people, one bold conviction: that every youth deserves a fair start.",
+  },
+  {
+    year: "2022",
+    title: "Building Momentum",
+    body: "Cohorts 2 and 3 completed, deepening our work experience partnerships and refining the programme model based on graduate feedback.",
+  },
+  {
+    year: "2023",
+    title: "Community Events",
+    body: "Launched the Seasonal Drive — a twice-yearly programme bringing essential resources to children in under-resourced communities at Christmas and Easter.",
   },
   {
     year: "2024",
-    title: "New Fronts",
-    body: "Launched Women Empowerment and Faith & Wellness programmes to serve the whole person.",
+    title: "Alumni & Culture",
+    body: "Held the inaugural Aequitas Alumni Forum and the Gifts for Christ Concert, establishing two annual touchstones for our growing community.",
+  },
+  {
+    year: "2025",
+    title: "Cohort 11 Complete",
+    body: "With 118+ graduates across all cohorts and 60% female participation, the Aequitas Experience continues to set the standard for youth development in Ghana.",
   },
 ];
 
@@ -202,7 +201,7 @@ export default function Impact() {
                 <Counter
                   raw={s.raw}
                   suffix={s.suffix}
-                  prefix={s.prefix ?? ""}
+                  prefix=""
                   decimal={s.value.includes(".")}
                   trigger={statsVisible}
                 />

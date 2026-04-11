@@ -29,9 +29,9 @@ const partners = [
 ];
 
 export default function Partners() {
-  const header = useReveal();
-  const grid = useReveal();
-  const cta = useReveal();
+  const { elRef: headerRef, visible: headerVisible } = useReveal();
+  const { elRef: gridRef, visible: gridVisible } = useReveal();
+  const { elRef: ctaRef, visible: ctaVisible } = useReveal();
 
   return (
     <section id="partners">
@@ -42,8 +42,8 @@ export default function Partners() {
       >
         {/* Header */}
         <div
-          ref={header.elRef}
-          className={`flex items-end justify-between gap-8 mb-16 flex-wrap transition-all duration-700 ${header.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          ref={headerRef}
+          className={`flex items-end justify-between gap-8 mb-16 flex-wrap transition-all duration-700 ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <div>
             <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-blue mb-3">
@@ -65,8 +65,8 @@ export default function Partners() {
 
         {/* Partner grid */}
         <div
-          ref={grid.elRef}
-          className={`grid gap-px bg-gray-200 border border-gray-200 transition-all duration-700 delay-100 ${grid.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          ref={gridRef}
+          className={`grid gap-px bg-gray-200 border border-gray-200 transition-all duration-700 delay-100 ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
         >
           {partners.map((p) => (
@@ -77,8 +77,8 @@ export default function Partners() {
 
       {/* CTA strip */}
       <div
-        ref={cta.elRef}
-        className={`bg-ink relative overflow-hidden flex items-center justify-between gap-8 flex-wrap px-6 md:px-16 lg:px-24 transition-all duration-700 ${cta.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+        ref={ctaRef}
+        className={`bg-ink relative overflow-hidden flex items-center justify-between gap-8 flex-wrap px-6 md:px-16 lg:px-24 transition-all duration-700 ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         style={{ paddingTop: "clamp(48px, 7vw, 80px)", paddingBottom: "clamp(48px, 7vw, 80px)" }}
       >
         {/* Ghost watermark */}

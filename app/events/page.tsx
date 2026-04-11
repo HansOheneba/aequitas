@@ -6,94 +6,96 @@ export const metadata: Metadata = {
   description: "Upcoming and past events hosted by Aequitas Foundation.",
 };
 
+// ── Recurring annual events — projected to 2026 editions ──────────────────
 const FEATURED = {
-  day: "14",
-  month: "Jun",
+  day: "19",
+  month: "Apr",
   year: "2026",
-  title: "Annual Scholarship Awards Gala",
-  location: "New York, NY",
-  type: "Gala",
+  title: "Gifts for Christ Concert 2026",
+  location: "Y97, Nii Martey Tsuru St., East Airport, Accra",
+  type: "Concert",
   description:
-    "An evening of celebration honouring our newest cohort of scholars and the donors who make their journeys possible. Black tie. Live music. Stories that move you.",
-  cta: "Register Now",
-  img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=85",
+    "Our flagship annual concert — an evening of live music, celebration, and community that raises vital funds for youth development programmes across Ghana. Every seat filled is a future changed.",
+  cta: "Attend",
+  img: "/gallery/2024gifts4christ/MG_8938.webp",
 };
 
 const UPCOMING = [
   {
-    day: "28",
+    day: "14",
     month: "Jun",
     year: "2026",
-    title: "Startup Incubator Demo Day",
-    location: "Virtual & Accra, Ghana",
-    type: "Programme",
+    title: "Aequitas Alumni Forum 2026",
+    location: "Y97, Nii Martey Tsuru St., East Airport, Accra",
+    type: "Alumni",
     description:
-      "Watch our latest cohort of entrepreneurs pitch to investors, mentors, and community leaders.",
-    cta: "Save Your Spot",
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80",
+      "An annual gathering for Aequitas graduates — celebrating growth, sharing stories, and shaping what comes next for the Foundation and its community.",
+    cta: "Attend",
+    img: "/gallery/aeq-expereince/MG_0924-scaled.webp",
   },
   {
-    day: "19",
-    month: "Jul",
+    day: "07",
+    month: "Sep",
     year: "2026",
-    title: "Women Empowerment Summit 2026",
-    location: "Lagos, Nigeria",
-    type: "Summit",
-    description:
-      "A one-day summit bringing together women leaders, changemakers, and aspiring entrepreneurs.",
-    cta: "Register Now",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80",
-  },
-  {
-    day: "09",
-    month: "Aug",
-    year: "2026",
-    title: "Next Gen Leaders Camp",
-    location: "Cape Coast, Ghana",
+    title: "Aequitas Experience — Cohort 12",
+    location: "Y97, Nii Martey Tsuru St., East Airport, Accra",
     type: "Programme",
     description:
-      "A week-long leadership immersion for youth aged 14–22 — workshops, challenges, mentorship.",
+      "Applications are open for the next cohort of our flagship 12-week youth development programme. Secure your place in a transformative experience.",
     cta: "Apply Now",
-    img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=900&q=80",
+    img: "/gallery/aeq-expereince/MG_1044-scaled.webp",
+  },
+  {
+    day: "20",
+    month: "Dec",
+    year: "2026",
+    title: "Seasonal Drive — Christmas 2026",
+    location: "Multiple Communities, Accra",
+    type: "Drive",
+    description:
+      "Our annual Christmas distribution — bringing gifts, school supplies, and community care to children in under-resourced areas across Accra.",
+    cta: "Volunteer",
+    img: "/gallery/seasons-drive/DSC_6067.webp",
   },
 ];
 
+// ── Real past events (chronological, most recent first) ───────────────────
 const PAST = [
   {
-    title: "Faith & Wellness Retreat 2025",
-    date: "Nov 2025",
-    location: "Accra, Ghana",
-    type: "Retreat",
-  },
-  {
-    title: "2025 Impact Report Launch",
-    date: "Sep 2025",
-    location: "Virtual",
-    type: "Launch",
-  },
-  {
-    title: "Seasonal Drive — Christmas 2025",
-    date: "Dec 2025",
-    location: "Multiple Cities",
-    type: "Drive",
-  },
-  {
-    title: "Alumni Homecoming Weekend",
-    date: "Aug 2025",
-    location: "New York, NY",
-    type: "Alumni",
+    title: "Aequitas Experience — Cohort 11",
+    date: "Feb 10 – Apr 25, 2025",
+    location: "East Airport, Accra",
+    type: "Programme",
   },
   {
     title: "Gifts for Christ Concert 2025",
-    date: "Apr 2025",
-    location: "Accra, Ghana",
+    date: "Apr 20, 2025",
+    location: "East Airport, Accra",
     type: "Concert",
   },
   {
-    title: "Aequitas Experience Cohort 11",
-    date: "Feb – Apr 2025",
+    title: "Seasonal Drive",
+    date: "Jul 12, 2024",
+    location: "Accra, Ghana",
+    type: "Drive",
+  },
+  {
+    title: "Aequitas Alumni Forum",
+    date: "Jun 14, 2024",
     location: "East Airport, Accra",
-    type: "Programme",
+    type: "Alumni",
+  },
+  {
+    title: "Seasonal Drive",
+    date: "Jan 18, 2024",
+    location: "Accra, Ghana",
+    type: "Drive",
+  },
+  {
+    title: "Gifts for Christ",
+    date: "Jan 18 – Mar 31, 2024",
+    location: "Accra, Ghana",
+    type: "Concert",
   },
 ];
 
