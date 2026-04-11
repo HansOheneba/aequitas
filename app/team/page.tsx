@@ -17,7 +17,7 @@ const BOARD = [
     name: "Rev'd Akua Ofori-Boateng",
     role: "Executive Director",
     initial: "AO",
-    image: "/team/Rev'd-Akua-Ofori-Boateng.jpg",
+    image: "/team/Akua-Ofori-Boateng.jpg",
     bio: "Theologian, educator, and social entrepreneur with over 20 years in community development across West Africa and the United States.",
   },
   {
@@ -236,68 +236,67 @@ export default function TeamPage() {
               delay={i * 80}
               className="group border-b border-r border-gray-100 last:border-r-0 nth-[2n]:md:border-r-0 lg:nth-[2n]:border-r lg:nth-[4n]:border-r-0"
             >
-              <div className="px-8 md:px-10 py-12 h-full flex flex-col">
-                {/* Photo avatar */}
-                <div
-                  className="relative w-16 h-16 mb-8 overflow-hidden"
-                  style={{ border: "1px solid rgba(55,197,243,0.2)" }}
-                >
+              <div className="group h-full flex flex-col bg-white overflow-hidden transition-all duration-300 hover:shadow-xl">
+                {/* IMAGE */}
+                <div className="relative w-full h-64 overflow-hidden">
                   <Image
                     src={m.image}
                     alt={m.name}
                     fill
-                    sizes="64px"
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
+
+                  {/* subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
 
-                {/* Index */}
-                <p
-                  style={{
-                    fontFamily: "monospace",
-                    fontSize: 10,
-                    letterSpacing: "0.18em",
-                    color: "#d1d5db",
-                    marginBottom: 12,
-                  }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </p>
+                {/* CONTENT */}
+                <div className="px-8 py-8 flex flex-col flex-1">
+                  <p
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.18em",
+                      color: "#9ca3af",
+                      marginBottom: 8,
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
 
-                <h3
-                  className="font-bold leading-snug group-hover:text-blue transition-colors duration-200"
-                  style={{
-                    fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
-                    color: "#0a0e1a",
-                  }}
-                >
-                  {" "}
-                  {m.name}
-                </h3>
-                <p
-                  className="mt-1 mb-5"
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "#9ca3af",
-                  }}
-                >
-                  {m.role}
-                </p>
-                <p
-                  className="mt-auto"
-                  style={{ fontSize: 13, lineHeight: 1.8, color: "#6b7280" }}
-                >
-                  {m.bio}
-                </p>
+                  <h3
+                    className="font-bold leading-snug"
+                    style={{
+                      fontSize: "clamp(1.05rem, 1.3vw, 1.2rem)",
+                      color: "#0a0e1a",
+                    }}
+                  >
+                    {m.name}
+                  </h3>
 
-                {/* Hover accent */}
-                <div
-                  className="h-px w-0 group-hover:w-8 mt-8 transition-all duration-300"
-                  style={{ background: "#37c5f3" }}
-                />
+                  <p
+                    className="mb-4"
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "#37c5f3",
+                    }}
+                  >
+                    {m.role}
+                  </p>
+
+                  <p
+                    className="mt-auto"
+                    style={{
+                      fontSize: 13,
+                      lineHeight: 1.7,
+                      color: "#6b7280",
+                    }}
+                  >
+                    {m.bio}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
