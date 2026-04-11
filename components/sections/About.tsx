@@ -183,11 +183,11 @@ export default function AequitasSection() {
               Alignment
             </h2>
 
-            <div data-sdg className="grid grid-cols-2 gap-2.5">
+            <div data-sdg className="grid grid-cols-2 gap-4 place-items-center">
               {SDG_GOALS.map((g, i) => (
                 <div
                   key={g.num}
-                  className="relative overflow-hidden cursor-default transition-all duration-500 hover:scale-[1.03]"
+                  className="cursor-default transition-all duration-500 hover:scale-[1.02]"
                   style={{
                     opacity: sdgIn ? 1 : 0,
                     transform: sdgIn ? "translateY(0)" : "translateY(16px)",
@@ -198,9 +198,9 @@ export default function AequitasSection() {
                   <Image
                     src={g.src}
                     alt={g.label}
-                    width={200}
-                    height={200}
-                    className="w-full h-auto block"
+                    width={100}
+                    height={100}
+                    className="w-32 h-auto block"
                   />
                 </div>
               ))}
