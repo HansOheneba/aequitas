@@ -1,7 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Impact from "@/components/sections/Impact";
-import Testimonials from "@/components/sections/Testimonials";
 import SuccessStory from "@/components/sections/SuccessStory";
 import AlumniStories from "@/components/sections/AlumniStories";
 import EventsPreview from "@/components/sections/EventsPreview";
@@ -17,7 +16,6 @@ export default function Home() {
       <Impact />
       <AlumniStories />
       <EventsPreview />
-      <Testimonials />
       <SuccessStory />
       <Partners />
       <Contact />

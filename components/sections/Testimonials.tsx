@@ -5,43 +5,35 @@ import { useState, useEffect, useRef } from "react";
 const testimonials = [
   {
     quote:
-      "Aequitas didn't just give me a scholarship — they gave me a community. My mentor walked with me through every challenge. I graduated debt-free and landed my dream job.",
-    name: "Amara Osei",
-    title: "Scholar Alumni, Class of 2021",
-    initials: "AO",
-    program: "Scholarship Program",
+      "The Aequitas Experience has led to the shifting of my perspective with regards to my relationship with others, especially around communication and understanding that the burden of communication lies with the person speaking.",
+    name: "Elizabeth Aggrey",
+    title: "Cohort 7 · Rakes Company Limited",
+    initials: "EA",
+    program: "The Aequitas Experience",
   },
   {
     quote:
-      "The incubator was the turning point for my business. Within 18 months of graduating, my startup had employed 7 people from my neighbourhood. I owe so much to this foundation.",
-    name: "David Mensah",
-    title: "Entrepreneur & Incubator Graduate",
-    initials: "DM",
-    program: "Startup Incubator",
+      "It has really helped me to know when to talk, how to talk. I must say my managers really enjoy conversing with me because I really learnt how to interact during my training with Aequitas. I was very very quiet and shy before the experience.",
+    name: "Charity Odai",
+    title: "Cohort 6 · Fidelity Bank",
+    initials: "CO",
+    program: "The Aequitas Experience",
   },
   {
     quote:
-      "As a single mother, I didn't think doors like this would open for me. The women's programme taught me business, gave me funding, and surrounded me with women who believed in me.",
-    name: "Grace Tetteh",
-    title: "Women Empowerment Graduate",
-    initials: "GT",
-    program: "Women Empowerment",
+      "I have become proactive and now I also critically analyze every step I take, taking into consideration my strengths and weaknesses.",
+    name: "Patience Kuranchie",
+    title: "Cohort 6 · Star Oil Company Limited",
+    initials: "PK",
+    program: "The Aequitas Experience",
   },
   {
     quote:
-      "The Faith & Wellness program helped me deal with trauma I had carried for years. I came for skills. I left whole. Aequitas truly sees the whole person.",
-    name: "Samuel Kofi",
-    title: "Faith & Wellness Participant",
-    initials: "SK",
-    program: "Faith & Wellness",
-  },
-  {
-    quote:
-      "I was 17 when I joined the Next Gen Leaders program. It changed how I see myself. Today I run a youth nonprofit and I trace it all back to what started here.",
-    name: "Ama Frimpong",
-    title: "Next Gen Leaders Alumni",
-    initials: "AF",
-    program: "Next Gen Leaders",
+      "The Aequitas Experience has helped me identify who I am, what I seek to achieve and how to achieve it. This has upgraded my thinking, my relationship with people and has largely resulted in positive remarks wherever I have been since: work, home and other places.",
+    name: "Desmond Ohusegun Kolawole",
+    title: "Cohort 6 · Shieldbest Tech",
+    initials: "DK",
+    program: "The Aequitas Experience",
   },
 ];
 
@@ -50,7 +42,9 @@ function useReveal() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      ([e]) => {
+        if (e.isIntersecting) setVisible(true);
+      },
       { threshold: 0.1 },
     );
     if (elRef.current) io.observe(elRef.current);
@@ -64,13 +58,13 @@ export default function Testimonials() {
   const { elRef, visible } = useReveal();
   const t = testimonials[active];
 
-  const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
+  const prev = () =>
+    setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
   const next = () => setActive((p) => (p + 1) % testimonials.length);
 
   return (
     <section id="testimonials" className="bg-cream">
       <div className="px-8 md:px-16 lg:px-24 py-28" ref={elRef}>
-
         {/* Header row */}
         <div
           className={`grid grid-cols-[1fr_auto] items-end border-b border-gray-200 pb-8 mb-16 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
@@ -81,7 +75,10 @@ export default function Testimonials() {
             </p>
             <h2
               className="font-extrabold leading-[1.05] text-dark"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontFamily: "var(--font-montserrat)" }}
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3.2rem)",
+                fontFamily: "var(--font-montserrat)",
+              }}
             >
               Voices of <span className="text-blue">Change</span>
             </h2>
@@ -98,9 +95,19 @@ export default function Testimonials() {
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   {i === 0 ? (
-                    <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                    <path
+                      d="M9 2L4 7l5 5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="square"
+                    />
                   ) : (
-                    <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                    <path
+                      d="M5 2l5 5-5 5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="square"
+                    />
                   )}
                 </svg>
               </button>
@@ -123,7 +130,10 @@ export default function Testimonials() {
             </div>
             <blockquote
               className="font-medium text-[#1a1f2e] mb-10"
-              style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.45rem)", lineHeight: 1.7 }}
+              style={{
+                fontSize: "clamp(1.1rem, 1.8vw, 1.45rem)",
+                lineHeight: 1.7,
+              }}
             >
               {t.quote}
             </blockquote>
@@ -146,7 +156,14 @@ export default function Testimonials() {
             {/* Stars */}
             <div className="flex gap-1 mb-6">
               {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} width="14" height="14" viewBox="0 0 20 20" fill="currentColor" className="text-blue">
+                <svg
+                  key={i}
+                  width="14"
+                  height="14"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="text-blue"
+                >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
@@ -155,7 +172,10 @@ export default function Testimonials() {
             {/* Initials */}
             <div
               className="w-14 h-14 border-2 border-blue flex items-center justify-center text-blue font-bold text-base mb-5"
-              style={{ fontFamily: "'Courier New', monospace", letterSpacing: "0.05em" }}
+              style={{
+                fontFamily: "'Courier New', monospace",
+                letterSpacing: "0.05em",
+              }}
             >
               {t.initials}
             </div>
@@ -182,7 +202,6 @@ export default function Testimonials() {
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
