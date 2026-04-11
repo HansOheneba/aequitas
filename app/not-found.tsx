@@ -58,7 +58,12 @@ export default function NotFound() {
           alt="Aequitas Foundation"
           width={48}
           height={48}
-          style={{ width: "auto", height: "40px", marginBottom: 40, opacity: 0.7 }}
+          style={{
+            width: "auto",
+            height: "40px",
+            marginBottom: 40,
+            opacity: 0.7,
+          }}
         />
 
         {/* Eyebrow */}
@@ -102,7 +107,10 @@ export default function NotFound() {
           <Link
             href="/"
             className="inline-block px-10 py-4 font-bold text-[11px] tracking-[0.18em] uppercase transition-colors duration-200 text-center"
-            style={{ background: "var(--color-blue)", color: "var(--color-ink)" }}
+            style={{
+              background: "var(--color-blue)",
+              color: "var(--color-ink)",
+            }}
           >
             Back to Home
           </Link>

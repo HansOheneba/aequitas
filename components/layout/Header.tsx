@@ -47,6 +47,11 @@ const programsMenu = [
     description: "Community giving initiatives every season",
   },
   {
+    label: "Empower Her Dreams",
+    href: "/programs/empower-her-dreams",
+    description: "16-week employability programme for female graduates",
+  },
+  {
     label: "Alumni Forum",
     href: "/apply",
     description: "Stay connected with our growing network",
@@ -66,6 +71,7 @@ const navItems: NavItem[] = [
   { label: "About Us", megaMenu: aboutMenu },
   { label: "Our Programs", megaMenu: programsMenu },
   { label: "Events", href: "/events" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
   { label: "Donate", href: "/donate" },
   { label: "2030 Goal", href: "/2030-goal" },

@@ -8,7 +8,9 @@ function useReveal() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      ([e]) => {
+        if (e.isIntersecting) setVisible(true);
+      },
       { threshold: 0.08 },
     );
     if (elRef.current) io.observe(elRef.current);
@@ -19,7 +21,11 @@ function useReveal() {
 
 const partners = [
   { name: "African Development Bank", category: "Finance", since: "2019" },
-  { name: "Tony Elumelu Foundation", category: "Entrepreneurship", since: "2020" },
+  {
+    name: "Tony Elumelu Foundation",
+    category: "Entrepreneurship",
+    since: "2020",
+  },
   { name: "MasterCard Foundation", category: "Education", since: "2018" },
   { name: "Ashesi University", category: "Academia", since: "2021" },
   { name: "GIZ Ghana", category: "Development", since: "2019" },
@@ -38,7 +44,10 @@ export default function Partners() {
       {/* Header + grid */}
       <div
         className="bg-white px-6 md:px-16 lg:px-24"
-        style={{ paddingTop: "clamp(72px, 10vw, 120px)", paddingBottom: "clamp(72px, 10vw, 120px)" }}
+        style={{
+          paddingTop: "clamp(72px, 10vw, 120px)",
+          paddingBottom: "clamp(72px, 10vw, 120px)",
+        }}
       >
         {/* Header */}
         <div
@@ -51,9 +60,13 @@ export default function Partners() {
             </p>
             <h2
               className="font-extrabold text-dark leading-[1.05]"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", fontFamily: "var(--font-montserrat)" }}
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3.2rem)",
+                fontFamily: "var(--font-montserrat)",
+              }}
             >
-              Built with the<br />
+              Built with the
+              <br />
               <span className="text-blue">Best in Africa</span>
             </h2>
           </div>
@@ -67,7 +80,9 @@ export default function Partners() {
         <div
           ref={gridRef}
           className={`grid gap-px bg-gray-200 border border-gray-200 transition-all duration-700 delay-100 ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
+          style={{
+            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+          }}
         >
           {partners.map((p) => (
             <PartnerCard key={p.name} partner={p} />
@@ -79,7 +94,10 @@ export default function Partners() {
       <div
         ref={ctaRef}
         className={`bg-ink relative overflow-hidden flex items-center justify-between gap-8 flex-wrap px-6 md:px-16 lg:px-24 transition-all duration-700 ${ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-        style={{ paddingTop: "clamp(48px, 7vw, 80px)", paddingBottom: "clamp(48px, 7vw, 80px)" }}
+        style={{
+          paddingTop: "clamp(48px, 7vw, 80px)",
+          paddingBottom: "clamp(48px, 7vw, 80px)",
+        }}
       >
         {/* Ghost watermark */}
         <div
@@ -100,7 +118,10 @@ export default function Partners() {
           </p>
           <h3
             className="font-extrabold text-white leading-[1.15]"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontFamily: "var(--font-montserrat)" }}
+            style={{
+              fontSize: "clamp(1.5rem, 3vw, 2.4rem)",
+              fontFamily: "var(--font-montserrat)",
+            }}
           >
             Become a Partner
           </h3>
@@ -121,7 +142,7 @@ export default function Partners() {
   );
 }
 
-function PartnerCard({ partner }: { partner: typeof partners[0] }) {
+function PartnerCard({ partner }: { partner: (typeof partners)[0] }) {
   return (
     <div className="group bg-white px-6 py-7 border-l-[3px] border-l-transparent hover:border-l-blue transition-[border-color] duration-200 cursor-default">
       <p

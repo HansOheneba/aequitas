@@ -69,7 +69,6 @@ export default function SeasonalDrivePage() {
 
   return (
     <main style={{ background: "var(--color-ink)" }}>
-
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
@@ -151,7 +150,10 @@ export default function SeasonalDrivePage() {
               <Link
                 href="/donate"
                 className="inline-block px-10 py-4 font-bold text-[11px] tracking-[0.18em] uppercase transition-colors duration-200"
-                style={{ background: "var(--color-blue)", color: "var(--color-ink)" }}
+                style={{
+                  background: "var(--color-blue)",
+                  color: "var(--color-ink)",
+                }}
               >
                 Support a Drive
               </Link>
@@ -248,7 +250,8 @@ export default function SeasonalDrivePage() {
                 fontFamily: "var(--font-montserrat)",
               }}
             >
-              Two Drives. <span style={{ color: "var(--color-blue)" }}>One Mission.</span>
+              Two Drives.{" "}
+              <span style={{ color: "var(--color-blue)" }}>One Mission.</span>
             </h2>
           </div>
 
@@ -262,12 +265,17 @@ export default function SeasonalDrivePage() {
                   background: "#0d1017",
                   border: "1px solid rgba(255,255,255,0.06)",
                   opacity: drivesVisible ? 1 : 0,
-                  transform: drivesVisible ? "translateY(0)" : "translateY(22px)",
+                  transform: drivesVisible
+                    ? "translateY(0)"
+                    : "translateY(22px)",
                   transitionDelay: `${i * 120}ms`,
                 }}
               >
                 {/* Image */}
-                <div className="relative overflow-hidden" style={{ height: 280 }}>
+                <div
+                  className="relative overflow-hidden"
+                  style={{ height: 280 }}
+                >
                   <Image
                     src={drive.image}
                     alt={drive.headline}
@@ -298,7 +306,10 @@ export default function SeasonalDrivePage() {
                 <div className="p-8 flex flex-col gap-3 flex-1">
                   <p
                     className="text-[10px] font-semibold tracking-[0.22em] uppercase"
-                    style={{ color: "rgba(255,255,255,0.25)", fontFamily: "'Courier New', monospace" }}
+                    style={{
+                      color: "rgba(255,255,255,0.25)",
+                      fontFamily: "'Courier New', monospace",
+                    }}
                   >
                     {String(i + 1).padStart(2, "0")} — {drive.season} Drive
                   </p>
@@ -348,7 +359,10 @@ export default function SeasonalDrivePage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative overflow-hidden mt-8" style={{ height: 240 }}>
+            <div
+              className="relative overflow-hidden mt-8"
+              style={{ height: 240 }}
+            >
               <Image
                 src="/gallery/seasons-drive/WhatsApp-Image-2024-05-10-at-2.24.30-PM-2.webp"
                 alt="Community gathering"
@@ -357,7 +371,10 @@ export default function SeasonalDrivePage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative overflow-hidden -mt-4 col-span-2" style={{ height: 180 }}>
+            <div
+              className="relative overflow-hidden -mt-4 col-span-2"
+              style={{ height: 180 }}
+            >
               <Image
                 src="/gallery/seasons-drive/WhatsApp-Image-2024-05-10-at-2.24.31-PM-1.webp"
                 alt="Gifts distribution event"
@@ -389,8 +406,7 @@ export default function SeasonalDrivePage() {
             >
               More Than{" "}
               <span style={{ color: "var(--color-blue)" }}>Giving</span>
-              <br />
-              — It&apos;s Belonging
+              <br />— It&apos;s Belonging
             </h2>
             <div
               className="w-10 mb-8"
@@ -417,7 +433,10 @@ export default function SeasonalDrivePage() {
                 <div key={pt.n} className="flex gap-5">
                   <span
                     className="shrink-0 text-[10px] font-bold tracking-[0.2em] mt-1"
-                    style={{ color: "var(--color-blue)", fontFamily: "'Courier New', monospace" }}
+                    style={{
+                      color: "var(--color-blue)",
+                      fontFamily: "'Courier New', monospace",
+                    }}
                   >
                     {pt.n}
                   </span>
@@ -483,7 +502,11 @@ export default function SeasonalDrivePage() {
           <Link
             href="/gallery"
             className="inline-block text-[11px] font-semibold tracking-[0.22em] uppercase transition-colors duration-200"
-            style={{ color: "rgba(255,255,255,0.3)", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 3 }}
+            style={{
+              color: "rgba(255,255,255,0.3)",
+              borderBottom: "1px solid rgba(255,255,255,0.15)",
+              paddingBottom: 3,
+            }}
           >
             See Full Gallery →
           </Link>
@@ -555,8 +578,8 @@ export default function SeasonalDrivePage() {
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
               Whether you want to donate items, contribute funds, or volunteer
-              your time on the day — there is a role for you. Every hand
-              matters when the goal is making a child feel valued.
+              your time on the day — there is a role for you. Every hand matters
+              when the goal is making a child feel valued.
             </p>
           </div>
 
@@ -564,7 +587,10 @@ export default function SeasonalDrivePage() {
             <Link
               href="/donate"
               className="inline-block px-10 py-4 font-bold text-[11px] tracking-[0.18em] uppercase transition-colors duration-200"
-              style={{ background: "var(--color-blue)", color: "var(--color-ink)" }}
+              style={{
+                background: "var(--color-blue)",
+                color: "var(--color-ink)",
+              }}
             >
               Donate Now
             </Link>
@@ -578,7 +604,6 @@ export default function SeasonalDrivePage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

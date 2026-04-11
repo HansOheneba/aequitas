@@ -238,7 +238,10 @@ export default function TeamPage() {
             >
               <div className="px-8 md:px-10 py-12 h-full flex flex-col">
                 {/* Photo avatar */}
-                <div className="relative w-16 h-16 mb-8 overflow-hidden" style={{ border: "1px solid rgba(55,197,243,0.2)" }}>
+                <div
+                  className="relative w-16 h-16 mb-8 overflow-hidden"
+                  style={{ border: "1px solid rgba(55,197,243,0.2)" }}
+                >
                   <Image
                     src={m.image}
                     alt={m.name}

@@ -4,17 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const SDG_GOALS = [
-  { num: "4",  label: "Quality Education",              src: "/sdg/sdg-4.png"  },
-  { num: "8",  label: "Decent Work & Economic Growth",  src: "/sdg/sdg-8.png"  },
-  { num: "10", label: "Reduced Inequalities",           src: "/sdg/sdg-10.png" },
-  { num: "17", label: "Partnerships for the Goals",     src: "/sdg/sdg-17.png" },
+  { num: "4", label: "Quality Education", src: "/sdg/sdg-4.png" },
+  { num: "8", label: "Decent Work & Economic Growth", src: "/sdg/sdg-8.png" },
+  { num: "10", label: "Reduced Inequalities", src: "/sdg/sdg-10.png" },
+  { num: "17", label: "Partnerships for the Goals", src: "/sdg/sdg-17.png" },
 ];
 
 // Unsplash direct-source URLs (stable, free, no attribution required for demos)
-const IMG_CONCERT =
-  "/gallery/2024gifts4christ/MG_8677-scaled.jpg";
-const IMG_QUOTE =
-  "/gallery/aeq-expereince/MG_0816-scaled.webp";
+const IMG_CONCERT = "/gallery/2024gifts4christ/MG_8677-scaled.jpg";
+const IMG_QUOTE = "/gallery/aeq-expereince/MG_0816-scaled.webp";
 
 /* ── Arrow icon ───────────────────────────────────────────────────────────── */
 function Arrow() {

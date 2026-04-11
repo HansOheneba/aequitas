@@ -96,14 +96,22 @@ export default function AequitasExperiencePage() {
             <Link
               href="/"
               className="text-[11px] tracking-[0.15em] uppercase transition-colors duration-200"
-              style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Courier New', monospace" }}
+              style={{
+                color: "rgba(255,255,255,0.3)",
+                fontFamily: "'Courier New', monospace",
+              }}
             >
               Home
             </Link>
-            <span style={{ color: "rgba(255,255,255,0.15)", fontSize: 11 }}>/</span>
+            <span style={{ color: "rgba(255,255,255,0.15)", fontSize: 11 }}>
+              /
+            </span>
             <span
               className="text-[11px] tracking-[0.15em] uppercase"
-              style={{ color: "var(--color-blue)", fontFamily: "'Courier New', monospace" }}
+              style={{
+                color: "var(--color-blue)",
+                fontFamily: "'Courier New', monospace",
+              }}
             >
               Aequitas Experience
             </span>
@@ -120,7 +128,8 @@ export default function AequitasExperiencePage() {
               fontFamily: "var(--font-montserrat)",
             }}
           >
-            The Aequitas<br />
+            The Aequitas
+            <br />
             <span className="text-blue">Experience</span>
           </h1>
           <p
@@ -131,14 +140,15 @@ export default function AequitasExperiencePage() {
             resilience, skills, and community they need to thrive.
           </p>
 
-          <div className="w-12 mt-7" style={{ height: 3, background: "var(--color-blue)" }} />
+          <div
+            className="w-12 mt-7"
+            style={{ height: 3, background: "var(--color-blue)" }}
+          />
         </div>
       </section>
 
       {/* ── About + Image ────────────────────────────────────────── */}
-      <section
-        style={{ background: "#fff" }}
-      >
+      <section style={{ background: "#fff" }}>
         <div
           ref={aboutRef}
           className={`grid lg:grid-cols-2 transition-all duration-700 ${aboutVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
@@ -165,7 +175,8 @@ export default function AequitasExperiencePage() {
                   fontFamily: "var(--font-montserrat)",
                 }}
               >
-                Creating safe spaces for the youth to find and pursue their passion.
+                Creating safe spaces for the youth to find and pursue their
+                passion.
               </p>
             </div>
           </div>
@@ -190,7 +201,10 @@ export default function AequitasExperiencePage() {
               youth through a resilience-focused approach.
             </h2>
 
-            <div className="flex flex-col gap-4 text-[15px] leading-[1.85]" style={{ color: "#4b5563" }}>
+            <div
+              className="flex flex-col gap-4 text-[15px] leading-[1.85]"
+              style={{ color: "#4b5563" }}
+            >
               <p>
                 This flagship initiative of the foundation is a 12-week
                 internship and training opportunity for the youth — to give them
@@ -207,9 +221,9 @@ export default function AequitasExperiencePage() {
               </p>
               <p>
                 The Aequitas Experience targets GenZs (Aged 18 to 24) as well as
-                young graduates seeking full-time employment. We seek out engaged
-                and empowered individuals interested in personal and professional
-                development.
+                young graduates seeking full-time employment. We seek out
+                engaged and empowered individuals interested in personal and
+                professional development.
               </p>
             </div>
           </div>
@@ -241,7 +255,10 @@ export default function AequitasExperiencePage() {
             Programme at a Glance
           </p>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.05)" }}>
+          <div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-px"
+            style={{ background: "rgba(255,255,255,0.05)" }}
+          >
             {STATS.map((s, i) => (
               <div
                 key={s.label}
@@ -305,13 +322,21 @@ export default function AequitasExperiencePage() {
                   fontFamily: "var(--font-montserrat)",
                 }}
               >
-                Built on Four<br />Core Pillars
+                Built on Four
+                <br />
+                Core Pillars
               </h2>
             </div>
-            <div className="w-12 mb-1.5" style={{ height: 3, background: "var(--color-blue)" }} />
+            <div
+              className="w-12 mb-1.5"
+              style={{ height: 3, background: "var(--color-blue)" }}
+            />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.05)" }}>
+          <div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px"
+            style={{ background: "rgba(255,255,255,0.05)" }}
+          >
             {PILLARS.map((p, i) => (
               <div
                 key={p.number}
@@ -339,13 +364,20 @@ export default function AequitasExperiencePage() {
                 >
                   {p.title}
                 </h3>
-                <p className="text-[13px] leading-[1.8]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <p
+                  className="text-[13px] leading-[1.8]"
+                  style={{ color: "rgba(255,255,255,0.4)" }}
+                >
                   {p.body}
                 </p>
                 {/* Blue accent line on hover */}
                 <div
                   className="mt-6 transition-all duration-300 group-hover:w-full"
-                  style={{ width: "2rem", height: 2, background: "var(--color-blue)" }}
+                  style={{
+                    width: "2rem",
+                    height: 2,
+                    background: "var(--color-blue)",
+                  }}
                 />
               </div>
             ))}
@@ -382,7 +414,9 @@ export default function AequitasExperiencePage() {
                 fontFamily: "var(--font-montserrat)",
               }}
             >
-              Made for the<br />Next Generation
+              Made for the
+              <br />
+              Next Generation
             </h2>
             <div
               className="text-[15px] leading-[1.85] flex flex-col gap-4"
@@ -395,8 +429,8 @@ export default function AequitasExperiencePage() {
               </p>
               <p>
                 We seek engaged, open-minded individuals interested in genuine
-                personal and professional growth, who are ready to be challenged,
-                stretched, and shaped into well-rounded leaders.
+                personal and professional growth, who are ready to be
+                challenged, stretched, and shaped into well-rounded leaders.
               </p>
             </div>
           </div>
@@ -425,7 +459,10 @@ export default function AequitasExperiencePage() {
                 >
                   ✓
                 </div>
-                <p className="text-[15px] leading-snug" style={{ color: "#374151" }}>
+                <p
+                  className="text-[15px] leading-snug"
+                  style={{ color: "#374151" }}
+                >
                   {item}
                 </p>
               </div>
@@ -473,7 +510,8 @@ export default function AequitasExperiencePage() {
                 fontFamily: "var(--font-montserrat)",
               }}
             >
-              Take the First Step<br />
+              Take the First Step
+              <br />
               <span className="text-blue">Towards Your Future</span>
             </h2>
             <p

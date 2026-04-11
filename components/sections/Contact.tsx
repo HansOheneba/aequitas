@@ -18,8 +18,8 @@ function useReveal() {
 }
 
 const LINKS = [
-  { label: "+233 20 000 0000", href: "tel:+233200000000" },
-  { label: "hello@aequitas.org", href: "mailto:hello@aequitas.org" },
+  { label: "+233 (0) 55 141 4140", href: "tel:+233551414140" },
+  { label: "info@aequitas.org", href: "mailto:info@aequitas.org" },
 ];
 
 export default function Contact() {
